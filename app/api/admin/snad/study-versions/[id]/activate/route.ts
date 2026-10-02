@@ -1,0 +1,5 @@
+import { studyVersionActivateRoutes } from "@/deliberations/swiss-national-ai-dialogue/server/study-versions-route";
+
+export const runtime = "nodejs";
+
+export const { POST } = studyVersionActivateRoutes("admin");

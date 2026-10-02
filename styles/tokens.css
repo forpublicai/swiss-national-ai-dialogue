@@ -1,0 +1,1274 @@
+/*
+ * ============================================
+ * DESIGN TOKENS — Multi-theme system
+ * ============================================
+ * Three visual themes (bridge, default, ideas-for-change) × two color modes (light, dark).
+ * Switch via data-theme attribute + .dark/.light class on :root.
+ *
+ * Party affiliation colors are shared across all themes.
+ */
+
+/*
+ * ============================================
+ * TYPE SCALE — theme-agnostic
+ * ============================================
+ * The dimensional type scale <Text> resolves from — the single source of truth
+ * for size / line-height / weight / tracking. text.tsx points at these vars.
+ * Font *family* stays per-theme (see [data-slot="text"] in theme.css).
+ * Responsive variants redefine their size var in the media query below, so the
+ * breakpoint lives in the token.
+ */
+:root {
+  /* Display / Headline — serif */
+  --text-display-size: 30px;
+  --text-display-line: 1.05;
+  --text-display-weight: 600;
+  --text-display-tracking: -0.015em;
+
+  --text-headline-size: 24px;
+  --text-headline-line: 1.1;
+  --text-headline-weight: 500;
+  --text-headline-tracking: -0.01em;
+
+  --text-headline-sm-size: 20px;
+  --text-headline-sm-line: 1.15;
+  --text-headline-sm-weight: 500;
+  --text-headline-sm-tracking: -0.01em;
+
+  /* Titles — sans, semibold */
+  --text-title-xl-size: 24px;
+  --text-title-xl-line: 1.2;
+  --text-title-xl-weight: 600;
+  --text-title-xl-tracking: -0.01em;
+
+  --text-title-lg-size: 18px;
+  --text-title-lg-line: 1.2;
+  --text-title-lg-weight: 600;
+  --text-title-lg-tracking: -0.01em;
+
+  --text-title-size: 16px;
+  --text-title-line: 1.2;
+  --text-title-weight: 600;
+  --text-title-tracking: -0.01em;
+
+  --text-title-sm-size: 14px;
+  --text-title-sm-line: 1.2;
+  --text-title-sm-weight: 600;
+  --text-title-sm-tracking: 0em;
+
+  /* Body — sans, regular */
+  --text-body-lg-size: 18px;
+  --text-body-lg-line: 1.3;
+  --text-body-lg-weight: 400;
+
+  --text-body-size: 16px;
+  --text-body-line: 1.3;
+  --text-body-weight: 400;
+
+  --text-body-sm-size: 14px;
+  --text-body-sm-line: 1.3;
+  --text-body-sm-weight: 400;
+
+  /* Labels & meta — sans */
+  --text-label-size: 16px;
+  --text-label-line: 1.2;
+  --text-label-weight: 500;
+
+  --text-label-sm-size: 14px;
+  --text-label-sm-line: 1.2;
+  --text-label-sm-weight: 500;
+
+  --text-label-xs-size: 12px;
+  --text-label-xs-line: 1.2;
+  --text-label-xs-weight: 500;
+
+  --text-overline-size: 12px;
+  --text-overline-line: 1.2;
+  --text-overline-weight: 500;
+  --text-overline-tracking: 0.05em;
+
+  --text-caption-size: 12px;
+  --text-caption-line: 1.3;
+  --text-caption-weight: 400;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --text-display-size: 36px;
+    --text-headline-size: 30px;
+    --text-title-xl-size: 28px;
+    --text-title-lg-size: 20px;
+    --text-title-size: 18px;
+  }
+}
+
+/*
+ * ============================================
+ * COLOR PALETTES — Raw color scales
+ * ============================================
+ * Theme-independent palette primitives. Semantic tokens reference these
+ * via var() to create the dependency chain.
+ */
+:root {
+  /* Topaz (neutral) */
+  --color-white: #ffffff;
+
+  --color-neutral-50: #faf9f7;
+  --color-neutral-100: #f5f3f0;
+  --color-neutral-200: #e8e5e1;
+  --color-neutral-300: #d9d5d1;
+  --color-neutral-400: #aaa49e;
+  --color-neutral-500: #7b7574;
+  --color-neutral-600: #59535a;
+  --color-neutral-700: #433e46;
+  --color-neutral-800: #29272c;
+  --color-neutral-900: #19171c;
+  --color-neutral-950: #0a080c;
+
+  /* Cool Neutral (accent) */
+  --color-accent-50: #f5f7fa;
+  --color-accent-100: #e9edf3;
+  --color-accent-200: #d5dce6;
+  --color-accent-300: #b4c1d1;
+  --color-accent-400: #8d9fb7;
+  --color-accent-500: #6e829e;
+  --color-accent-600: #596b84;
+  --color-accent-700: #49586b;
+  --color-accent-800: #3f4b5a;
+  --color-accent-900: #37404d;
+  --color-accent-950: #242a33;
+
+  /* Green Haze (agree) */
+  --color-agree-50: #eefff5;
+  --color-agree-100: #d6ffe9;
+  --color-agree-200: #b0ffd6;
+  --color-agree-300: #72ffb7;
+  --color-agree-400: #2efa92;
+  --color-agree-500: #03e472;
+  --color-agree-600: #00bd5e;
+  --color-agree-700: #01994d;
+  --color-agree-800: #07743e;
+  --color-agree-900: #085f36;
+  --color-agree-950: #00361d;
+
+  /* Cinnabar (disagree) */
+  --color-disagree-50: #fef3f2;
+  --color-disagree-100: #fde5e3;
+  --color-disagree-200: #fcd0cc;
+  --color-disagree-300: #f9afa8;
+  --color-disagree-400: #f38076;
+  --color-disagree-500: #e6483a;
+  --color-disagree-600: #d53b2d;
+  --color-disagree-700: #b32e22;
+  --color-disagree-800: #942920;
+  --color-disagree-900: #7b2821;
+  --color-disagree-950: #43100c;
+
+  /* Bridging (blue → red spectrum) */
+  --color-bridging-50: #006fe1;
+  --color-bridging-100: #1d60e7;
+  --color-bridging-200: #3852ed;
+  --color-bridging-300: #5245f3;
+  --color-bridging-400: #6e36f9;
+  --color-bridging-500: #8928ff;
+  --color-bridging-600: #a02bd6;
+  --color-bridging-700: #b72fad;
+  --color-bridging-800: #ce3284;
+  --color-bridging-900: #e53659;
+  --color-bridging-950: #fd392f;
+
+  /* Bridging gradient */
+  --gradient-bridging: radial-gradient(105.75% 274.3% at 0% 50%, var(--color-bridging-50) 0%, var(--color-bridging-500) 47.1%, var(--color-bridging-950) 100%);
+}
+
+/*
+ * ============================================
+ * SHADOW SCALE
+ * ============================================
+ */
+:root {
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+  }
+}
+
+/* ── Fallback: default (zinc) light (when no data-theme is set) ── */
+:root,
+.light {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --success: oklch(0.55 0.16 145);
+  --success-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+
+  --radius: 0.5rem;
+
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --sidebar-background: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  --hero-background: radial-gradient(90% 100% at 50% 100%, oklch(0.30 0.005 286) 0%, oklch(0.20 0.005 286) 60%, oklch(0.14 0.005 286) 100%);
+  --hero-foreground: oklch(0.985 0 0);
+  --hero-text-shadow: none;
+  --hero-card-shadow: var(--shadow-md);
+  --hero-card-border: var(--border);
+  --hero-heading-weight: bold;
+  --hero-card-radius: var(--radius-lg);
+
+  --vote-agree: inherit;
+  --vote-disagree: inherit;
+
+  /* ── Component tokens: Button ── */
+  --button-radius: var(--radius-sm);
+  --button-font-weight: 400;
+  --button-shadow: var(--shadow-sm);
+  --button-primary-bg: var(--primary);
+  --button-primary-fg: var(--primary-foreground);
+  --button-primary-hover-bg: oklch(from var(--primary) l c h / 0.9);
+  --button-neutral-bg: var(--foreground);
+  --button-neutral-fg: var(--background);
+  --button-neutral-hover-bg: oklch(from var(--foreground) l c h / 0.9);
+  --button-link-color: var(--primary);
+  --button-link-decoration: var(--border);
+  --button-link-hover-decoration: var(--primary);
+  --button-agree-bg: var(--agree);
+  --button-agree-fg: var(--agree-foreground);
+  --button-agree-border: transparent;
+  --button-agree-icon: var(--agree-icon);
+  --button-disagree-bg: var(--disagree);
+  --button-disagree-fg: var(--disagree-foreground);
+  --button-disagree-border: transparent;
+  --button-disagree-icon: var(--disagree-icon);
+  --button-h-xs: 1.625rem;
+  --button-h-sm: 1.75rem;
+  --button-h-base: 2.25rem;
+  --button-h-lg: 2.5rem;
+  --button-px-xs: 0.5rem;
+  --button-px-sm: 0.5rem;
+  --button-px-base: 0.75rem;
+  --button-px-lg: 1rem;
+
+  /* ── Component tokens: Card ── */
+  --card-radius: var(--radius-xl);
+  --card-shadow: var(--shadow-sm);
+  --card-elevated-radius: var(--radius-lg);
+  --card-elevated-shadow: var(--shadow-md);
+  --card-elevated-border: var(--border);
+
+  /* ── Component tokens: Checkbox ── */
+  --checkbox-checked-bg: var(--primary);
+  --checkbox-checked-fg: var(--primary-foreground);
+  --checkbox-checked-border: var(--primary);
+
+  /* ── Component tokens: Dialog ── */
+  --dialog-radius: var(--radius-xl);
+  --dialog-shadow: var(--shadow-lg);
+  --dialog-border: 1px solid var(--border);
+  --dialog-banner-max-w: 24rem;
+  --dialog-banner-bottom: 0.5rem;
+  --dialog-banner-left: 0.5rem;
+
+  /* Font tokens (default theme) */
+  --theme-font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --theme-font-serif: Georgia, "Times New Roman", serif;
+  --theme-font-display: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --theme-font-ui: var(--theme-font-sans);
+}
+
+/*
+ * ============================================
+ * EDITORIAL THEME — Light
+ * ============================================
+ */
+[data-theme="bridge"],
+[data-theme="bridge"].light {
+  /* Neutral palette override — cooler, bluer tint */
+  --color-neutral-50: #f9fafe;
+  --color-neutral-100: #f7f9fc;
+  --color-neutral-200: #ebeef4;
+  --color-neutral-300: #dde1ea;
+
+  /* Background / Foreground */
+  --background: var(--color-neutral-100);
+  --foreground: var(--color-neutral-800);
+  --muted-foreground: color-mix(in srgb, var(--color-neutral-800) 65%, transparent);
+  --icon: var(--color-neutral-800);
+  --muted-icon: color-mix(in srgb, var(--color-neutral-800) 65%, transparent);
+
+  /* Primary */
+  --primary: var(--color-accent-600);
+  --primary-foreground: var(--color-white);
+  --primary-icon: var(--color-white);
+
+  /* Secondary */
+  --secondary: var(--color-white);
+  --secondary-foreground: var(--color-neutral-800);
+  --secondary-icon: var(--color-neutral-800);
+
+  /* Card */
+  --card: var(--color-white);
+  --card-foreground: var(--color-neutral-800);
+  --card-icon: var(--color-neutral-800);
+
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-neutral-800);
+
+  /* Accent */
+  --accent: var(--color-accent-100);
+  --accent-foreground: var(--color-accent-600);
+  --accent-icon: var(--color-accent-500);
+
+  /* Agree / Disagree */
+  --agree: var(--color-agree-100);
+  --agree-foreground: var(--color-agree-950);
+  --agree-icon: #00a88f;
+
+  --disagree: var(--color-disagree-100);
+  --disagree-foreground: var(--color-disagree-950);
+  --disagree-icon: #fd2f5c;
+
+  /* Border */
+  --border: color-mix(in srgb, var(--color-neutral-800) 25%, transparent);
+  --border-dim: color-mix(in srgb, var(--color-neutral-800) 10%, transparent);
+  --border-strong: var(--color-neutral-800);
+
+  /* Muted / Destructive / Success */
+  --muted: var(--color-neutral-200);
+  --destructive: var(--color-disagree-500);
+  --destructive-foreground: white;
+  --success: var(--color-agree-600);
+  --success-foreground: white;
+
+  --input: var(--color-neutral-300);
+  --ring: var(--color-accent-500);
+
+  --radius: 0.5rem;
+
+  --chart-1: oklch(0.35 0 0);
+  --chart-2: oklch(0.55 0 0);
+  --chart-3: oklch(0.72 0 0);
+  --chart-4: oklch(0.85 0 0);
+  --chart-5: oklch(0.55 0.12 250);
+
+  --sidebar-background: oklch(0.99 0.005 70);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.17 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.965 0 0);
+  --sidebar-accent-foreground: oklch(0.17 0 0);
+  --sidebar-border: oklch(0.885 0 0);
+  --sidebar-ring: oklch(0.65 0 0);
+
+  --hero-background: transparent;
+  --hero-foreground: var(--foreground);
+  --hero-card-radius: 0;
+
+  /* Component tokens: Button */
+  --button-radius: 1rem;
+  --button-radius-xs: var(--radius-md);
+  --button-radius-sm: var(--radius-lg);
+  --button-outline-radius-xs: var(--radius-xl);
+  --button-outline-radius-sm: var(--radius-xl);
+  --button-font-weight: 500;
+  --button-shadow: var(--shadow-sm);
+  --button-ghost-fg: var(--muted-foreground);
+  --button-primary-bg: var(--color-neutral-900);
+  --button-primary-fg: var(--color-neutral-100);
+  --button-primary-hover-bg: var(--color-neutral-800);
+  --button-neutral-bg: var(--color-neutral-500);
+  --button-neutral-fg: var(--color-white);
+  --button-neutral-hover-bg: var(--color-neutral-600);
+  --button-link-color: var(--primary);
+  --button-link-decoration: var(--border);
+  --button-link-hover-decoration: var(--primary);
+  --button-agree-bg: transparent;
+  --button-agree-fg: var(--foreground);
+  --button-agree-border: var(--agree-icon);
+  --button-agree-icon: var(--agree-icon);
+  --button-disagree-bg: transparent;
+  --button-disagree-fg: var(--foreground);
+  --button-disagree-border: var(--disagree-icon);
+  --button-disagree-icon: var(--disagree-icon);
+  --button-h-xs: 1.625rem;
+  --button-h-sm: 2.25rem;
+  --button-h-base: 3rem;
+  --button-h-lg: 3.5rem;
+  --button-px-xs: 0.5rem;
+  --button-px-sm: 1rem;
+  --button-px-base: 1rem;
+  --button-px-lg: 1.25rem;
+
+  /* Component tokens: Card */
+  --card-radius: var(--radius-xl);
+  --card-shadow: 0px 3px 12px rgba(23, 25, 29, 0.08), 0px 0px 0px 1px rgba(23, 25, 29, 0.04), 0px 0px 1px rgba(23, 25, 29, 0.12);
+  --card-elevated-radius: var(--radius-lg);
+  --card-elevated-shadow: var(--shadow-lg);
+  --card-elevated-border: transparent;
+
+  /* Component tokens: Checkbox */
+  --checkbox-checked-bg: var(--primary);
+  --checkbox-checked-fg: var(--primary-foreground);
+  --checkbox-checked-border: var(--primary);
+
+  /* Component tokens: Dialog */
+  --dialog-radius: var(--radius-xl);
+  --dialog-shadow: var(--shadow-lg);
+  --dialog-border: none;
+  --dialog-banner-max-w: 350px;
+  --dialog-banner-bottom: 1rem;
+  --dialog-banner-left: 1rem;
+
+  --theme-font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --theme-font-serif: "STIX Two Text", Georgia, serif;
+  --theme-font-display: "STIX Two Text", Georgia, serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --theme-font-ui: var(--theme-font-sans);
+}
+
+/*
+ * ============================================
+ * EDITORIAL THEME — Dark
+ * ============================================
+ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="bridge"]:not(.light) {
+    --background: var(--color-neutral-900);
+    --foreground: var(--color-neutral-100);
+    --muted-foreground: color-mix(in srgb, var(--color-neutral-100) 65%, transparent);
+    --icon: var(--color-neutral-100);
+    --muted-icon: color-mix(in srgb, var(--color-neutral-100) 65%, transparent);
+
+    --primary: var(--color-accent-500);
+    --primary-foreground: var(--color-white);
+    --primary-icon: var(--color-white);
+
+    --secondary: var(--color-neutral-700);
+    --secondary-foreground: var(--color-neutral-100);
+    --secondary-icon: var(--color-neutral-100);
+
+    --card: var(--color-neutral-800);
+    --card-foreground: var(--color-neutral-100);
+    --card-icon: var(--color-neutral-100);
+
+    --popover: var(--color-neutral-800);
+    --popover-foreground: var(--color-neutral-100);
+
+    --muted: var(--color-neutral-800);
+
+    --accent: var(--color-accent-900);
+    --accent-foreground: var(--color-accent-300);
+    --accent-icon: var(--color-accent-400);
+
+    --agree: var(--color-agree-800);
+    --agree-foreground: var(--color-agree-300);
+    --agree-icon: var(--color-agree-400);
+
+    --disagree: var(--color-disagree-800);
+    --disagree-foreground: var(--color-disagree-300);
+    --disagree-icon: var(--color-disagree-400);
+
+    --destructive: var(--color-disagree-500);
+    --destructive-foreground: var(--color-white);
+
+    --success: var(--color-agree-500);
+    --success-foreground: var(--color-white);
+
+    --border: color-mix(in srgb, var(--color-neutral-100) 25%, transparent);
+    --border-dim: color-mix(in srgb, var(--color-neutral-100) 10%, transparent);
+    --border-strong: var(--color-neutral-100);
+    --input: var(--color-neutral-700);
+    --ring: var(--color-accent-400);
+
+    --button-link-color: var(--color-accent-300);
+    --button-link-decoration: var(--border);
+    --button-link-hover-decoration: var(--color-accent-300);
+
+    --hero-background: transparent;
+    --hero-foreground: var(--foreground);
+  }
+}
+
+[data-theme="bridge"].dark {
+  --background: var(--color-neutral-900);
+  --foreground: var(--color-neutral-100);
+  --muted-foreground: color-mix(in srgb, var(--color-neutral-100) 65%, transparent);
+  --icon: var(--color-neutral-100);
+  --muted-icon: color-mix(in srgb, var(--color-neutral-100) 65%, transparent);
+
+  --primary: var(--color-accent-600);
+  --primary-foreground: var(--color-white);
+  --primary-icon: var(--color-white);
+
+  --secondary: var(--color-neutral-700);
+  --secondary-foreground: var(--color-neutral-100);
+  --secondary-icon: var(--color-neutral-100);
+
+  --card: var(--color-neutral-800);
+  --card-foreground: var(--color-neutral-100);
+  --card-icon: var(--color-neutral-100);
+  --card-shadow: 0px 0px 0px 1px rgb(255 255 255 / 0.12), 0px 2px 8px rgb(0 0 0 / 0.4);
+  --flip-edge-opacity: 0.2;
+
+  --popover: var(--color-neutral-800);
+  --popover-foreground: var(--color-neutral-100);
+
+  --muted: var(--color-neutral-800);
+
+  --accent: var(--color-accent-950);
+  --accent-foreground: var(--color-accent-300);
+  --accent-icon: var(--color-accent-400);
+
+  --agree: var(--color-agree-950);
+  --agree-foreground: var(--color-agree-300);
+  --agree-icon: var(--color-agree-400);
+
+  --disagree: var(--color-disagree-950);
+  --disagree-foreground: var(--color-disagree-300);
+  --disagree-icon: var(--color-disagree-400);
+
+  --destructive: var(--color-disagree-500);
+  --destructive-foreground: var(--color-white);
+
+  --success: var(--color-agree-500);
+  --success-foreground: var(--color-white);
+
+  --border: color-mix(in srgb, var(--color-neutral-100) 25%, transparent);
+  --border-dim: color-mix(in srgb, var(--color-neutral-100) 10%, transparent);
+  --border-strong: var(--color-neutral-100);
+  --input: var(--color-neutral-700);
+  --ring: var(--color-accent-400);
+
+  --button-link-color: var(--color-accent-400);
+  --button-link-decoration: var(--border);
+  --button-link-hover-decoration: var(--color-accent-400);
+
+  --hero-background: transparent;
+  --hero-foreground: var(--foreground);
+}
+
+/*
+ * ============================================
+ * DEFAULT THEME (Zinc) — Light
+ * ============================================
+ * Source: https://ui.shadcn.com/r/styles/new-york-v4/theme-zinc.json
+ */
+[data-theme="default"],
+[data-theme="default"].light {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --success: oklch(0.55 0.16 145);
+  --success-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+
+  --radius: 0.5rem;
+
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --sidebar-background: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  --hero-background: radial-gradient(90% 100% at 50% 100%, oklch(0.30 0.005 286) 0%, oklch(0.20 0.005 286) 60%, oklch(0.14 0.005 286) 100%);
+  --hero-foreground: oklch(0.985 0 0);
+  --hero-heading-weight: bold;
+  --hero-card-radius: var(--radius-lg);
+
+  /* Component tokens: Button */
+  --button-radius: var(--radius-sm);
+  --button-font-weight: 400;
+  --button-shadow: var(--shadow-sm);
+  --button-primary-bg: var(--primary);
+  --button-primary-fg: var(--primary-foreground);
+  --button-primary-hover-bg: oklch(from var(--primary) l c h / 0.9);
+  --button-neutral-bg: var(--foreground);
+  --button-neutral-fg: var(--background);
+  --button-neutral-hover-bg: oklch(from var(--foreground) l c h / 0.9);
+  --button-link-color: var(--primary);
+  --button-link-decoration: var(--border);
+  --button-link-hover-decoration: var(--primary);
+  --button-h-xs: 1.625rem;
+  --button-h-sm: 1.75rem;
+  --button-h-base: 2.25rem;
+  --button-h-lg: 2.5rem;
+  --button-px-xs: 0.5rem;
+  --button-px-sm: 0.5rem;
+  --button-px-base: 0.75rem;
+  --button-px-lg: 1rem;
+
+  /* Component tokens: Card */
+  --card-radius: var(--radius-xl);
+  --card-shadow: var(--shadow-sm);
+  --card-elevated-radius: var(--radius-lg);
+  --card-elevated-shadow: var(--shadow-md);
+  --card-elevated-border: var(--border);
+
+  /* Component tokens: Checkbox */
+  --checkbox-checked-bg: var(--primary);
+  --checkbox-checked-fg: var(--primary-foreground);
+  --checkbox-checked-border: var(--primary);
+
+  /* Component tokens: Dialog */
+  --dialog-radius: var(--radius-xl);
+  --dialog-shadow: var(--shadow-lg);
+  --dialog-border: 1px solid var(--border);
+  --dialog-banner-max-w: 24rem;
+  --dialog-banner-bottom: 0.5rem;
+  --dialog-banner-left: 0.5rem;
+
+  --theme-font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --theme-font-serif: Georgia, "Times New Roman", serif;
+  --theme-font-display: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --theme-font-ui: var(--theme-font-sans);
+}
+
+/*
+ * ============================================
+ * DEFAULT THEME (Zinc) — Dark
+ * ============================================
+ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="default"]:not(.light) {
+    --background: oklch(0.141 0.005 285.823);
+    --foreground: oklch(0.985 0 0);
+
+    --card: oklch(0.21 0.006 285.885);
+    --card-foreground: oklch(0.985 0 0);
+
+    --popover: oklch(0.21 0.006 285.885);
+    --popover-foreground: oklch(0.985 0 0);
+
+    --primary: oklch(0.92 0.004 286.32);
+    --primary-foreground: oklch(0.21 0.006 285.885);
+
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
+
+    --muted: oklch(0.274 0.006 286.033);
+    --muted-foreground: oklch(0.705 0.015 286.067);
+
+    --accent: oklch(0.274 0.006 286.033);
+    --accent-foreground: oklch(0.985 0 0);
+
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.985 0 0);
+
+    --success: oklch(0.65 0.16 145);
+    --success-foreground: oklch(0.985 0 0);
+
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.552 0.016 285.938);
+
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+
+    --sidebar-background: oklch(0.21 0.006 285.885);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.274 0.006 286.033);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.552 0.016 285.938);
+
+    --hero-background: radial-gradient(90% 100% at 50% 100%, oklch(0.25 0.005 286) 0%, oklch(0.18 0.005 286) 60%, oklch(0.12 0.005 286) 100%);
+    --hero-foreground: oklch(0.985 0 0);
+    --hero-heading-weight: bold;
+  }
+}
+
+[data-theme="default"].dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --card-shadow: 0px 0px 0px 1px rgb(255 255 255 / 0.10), 0px 2px 8px rgb(0 0 0 / 0.5);
+  --flip-edge-opacity: 0.2;
+
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.92 0.004 286.32);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --success: oklch(0.65 0.16 145);
+  --success-foreground: oklch(0.985 0 0);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar-background: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.552 0.016 285.938);
+
+  --hero-background: radial-gradient(90% 100% at 50% 100%, oklch(0.25 0.005 286) 0%, oklch(0.18 0.005 286) 60%, oklch(0.12 0.005 286) 100%);
+  --hero-foreground: oklch(0.985 0 0);
+  --hero-heading-weight: bold;
+}
+
+/*
+ * ============================================
+ * IDEAS FOR CHANGE THEME — Light
+ * ============================================
+ * Source: ideasforchange.org/app/globals.css
+ * Blue-primary palette with Commissioner/Merriweather fonts.
+ */
+[data-theme="ideas-for-change"],
+[data-theme="ideas-for-change"].light {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.205 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.205 0 0);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.205 0 0);
+
+  --primary: #FFDB00;
+  --primary-foreground: oklch(0.205 0 0);
+
+  --secondary: oklch(0.601 0.216 267.1);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.95 0.005 240);
+  --muted-foreground: oklch(0.5 0 0);
+
+  --accent: oklch(0.95 0.01 240);
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  --success: oklch(0.55 0.16 145);
+  --success-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.9 0.01 240);
+  --input: oklch(0.9 0.01 240);
+  --ring: oklch(0.55 0.15 240);
+
+  --radius: 0.5rem;
+
+  --chart-1: oklch(0.55 0.15 240);
+  --chart-2: oklch(0.627 0.265 303.9);
+  --chart-3: oklch(0.696 0.17 162.48);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --sidebar-background: oklch(0.97 0.005 240);
+  --sidebar-foreground: oklch(0.205 0 0);
+  --sidebar-primary: oklch(0.55 0.15 240);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.55 0.15 240);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.9 0.01 240);
+  --sidebar-ring: oklch(0.55 0.15 240);
+
+  --hero-background: radial-gradient(90% 100% at 50% 100%, rgb(71, 113, 255) 0%, rgb(13, 77, 251) 60%, rgb(0, 49, 147) 100%);
+  --hero-foreground: oklch(1 0 0);
+  --hero-text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05), 0px 3px 19px rgba(58, 41, 62, 0.06);
+  --hero-card-shadow: 0px 37px 37px rgba(0, 0, 0, 0.09), 0px 9px 20px rgba(0, 0, 0, 0.1);
+  --hero-card-border: transparent;
+  --hero-heading-weight: bold;
+  --hero-card-radius: var(--radius-xl);
+
+  --vote-agree: oklch(0.55 0.16 145);
+  --vote-disagree: oklch(0.55 0.16 25);
+
+  /* Accent */
+  --accent-icon: var(--secondary);
+
+  /* Agree / Disagree */
+  --agree: var(--color-agree-100);
+  --agree-foreground: var(--color-agree-950);
+  --agree-icon: var(--color-agree-600);
+
+  --disagree: var(--color-disagree-100);
+  --disagree-foreground: var(--color-disagree-950);
+  --disagree-icon: var(--color-disagree-600);
+
+  /* Component tokens: Button — IFC is bolder and larger */
+  --button-radius: var(--radius-lg);
+  --button-font-weight: 700;
+  --button-shadow: none;
+  --button-primary-bg: linear-gradient(to right, #FFDB00, #f8e74a);
+  --button-primary-fg: #403a49;
+  --button-primary-hover-bg: #FFB64D;
+  --button-neutral-bg: var(--muted);
+  --button-neutral-fg: var(--foreground);
+  --button-neutral-hover-bg: oklch(from var(--muted) l c h / 0.8);
+  --button-link-color: var(--secondary);
+  --button-link-decoration: oklch(from var(--secondary) l c h / 0.4);
+  --button-link-hover-decoration: var(--secondary);
+  --button-agree-bg: transparent;
+  --button-agree-fg: var(--foreground);
+  --button-agree-border: var(--agree-icon);
+  --button-agree-icon: var(--agree-icon);
+  --button-disagree-bg: transparent;
+  --button-disagree-fg: var(--foreground);
+  --button-disagree-border: var(--disagree-icon);
+  --button-disagree-icon: var(--disagree-icon);
+  --button-h-xs: 2rem;
+  --button-h-sm: 2.5rem;
+  --button-h-base: 3rem;
+  --button-h-lg: 3.5rem;
+  --button-px-xs: 1rem;
+  --button-px-sm: 1rem;
+  --button-px-base: 1rem;
+  --button-px-lg: 1.5rem;
+
+  /* Component tokens: Card */
+  --card-radius: var(--radius-xl);
+  --card-shadow: var(--shadow-sm);
+  --card-elevated-radius: var(--radius-xl);
+  --card-elevated-shadow: 0px 37px 37px rgba(0, 0, 0, 0.09), 0px 9px 20px rgba(0, 0, 0, 0.1);
+  --card-elevated-border: transparent;
+
+  /* Component tokens: Checkbox — IFC uses secondary for checked state */
+  --checkbox-checked-bg: var(--secondary);
+  --checkbox-checked-fg: var(--secondary-foreground);
+  --checkbox-checked-border: var(--secondary);
+
+  /* Component tokens: Dialog */
+  --dialog-radius: var(--radius-xl);
+  --dialog-shadow: var(--shadow-lg);
+  --dialog-border: 1px solid var(--border);
+  --dialog-banner-max-w: 24rem;
+  --dialog-banner-bottom: 0.5rem;
+  --dialog-banner-left: 0.5rem;
+
+  --theme-font-sans: "Commissioner", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --theme-font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+  --theme-font-display: "Commissioner", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --theme-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --theme-font-ui: var(--theme-font-sans);
+}
+
+/*
+ * ============================================
+ * IDEAS FOR CHANGE THEME — Dark
+ * ============================================
+ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="ideas-for-change"]:not(.light) {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+
+    --primary: #FFDB00;
+    --primary-foreground: oklch(0.205 0 0);
+
+    --secondary: oklch(0.35 0.12 267);
+    --secondary-foreground: oklch(1 0 0);
+
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+
+    --accent: oklch(0.22 0.02 240);
+    --accent-foreground: oklch(0.985 0 0);
+
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+
+    --success: oklch(0.65 0.16 145);
+    --success-foreground: oklch(0.985 0 0);
+
+    --border: oklch(0.269 0.02 240);
+    --input: oklch(0.269 0.02 240);
+    --ring: oklch(0.2 0.08 240);
+
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+
+    --sidebar-background: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.2 0.08 240);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0.02 240);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0.02 240);
+    --sidebar-ring: oklch(0.2 0.08 240);
+
+    --hero-background: radial-gradient(90% 100% at 50% 100%, oklch(0.35 0.12 240) 0%, oklch(0.25 0.10 240) 60%, oklch(0.15 0.08 240) 100%);
+    --hero-foreground: oklch(1 0 0);
+    --hero-text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05), 0px 3px 19px rgba(58, 41, 62, 0.06);
+    --hero-card-shadow: 0px 37px 37px rgba(0, 0, 0, 0.09), 0px 9px 20px rgba(0, 0, 0, 0.1);
+    --hero-card-border: transparent;
+    --hero-heading-weight: bold;
+
+    --vote-agree: oklch(0.65 0.16 145);
+    --vote-disagree: oklch(0.65 0.16 25);
+
+    /* Accent */
+    --accent-icon: oklch(0.7 0.15 267);
+
+    /* Agree / Disagree */
+    --agree: var(--color-agree-900);
+    --agree-foreground: var(--color-agree-300);
+    --agree-icon: var(--color-agree-400);
+
+    --disagree: var(--color-disagree-900);
+    --disagree-foreground: var(--color-disagree-300);
+    --disagree-icon: var(--color-disagree-400);
+  }
+}
+
+[data-theme="ideas-for-change"].dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --card-shadow: 0px 0px 0px 1px rgb(255 255 255 / 0.10), 0px 2px 8px rgb(0 0 0 / 0.5);
+  --flip-edge-opacity: 0.2;
+
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.82 0.17 85);
+  --primary-foreground: oklch(0.205 0 0);
+
+  --secondary: oklch(0.35 0.12 267);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  --accent: oklch(0.22 0.02 240);
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+
+  --success: oklch(0.65 0.16 145);
+  --success-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.269 0.02 240);
+  --input: oklch(0.269 0.02 240);
+  --ring: oklch(0.2 0.08 240);
+
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar-background: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.2 0.08 240);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0.02 240);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0.02 240);
+  --sidebar-ring: oklch(0.2 0.08 240);
+
+  --hero-background: radial-gradient(90% 100% at 50% 100%, oklch(0.35 0.12 240) 0%, oklch(0.25 0.10 240) 60%, oklch(0.15 0.08 240) 100%);
+  --hero-foreground: oklch(1 0 0);
+  --hero-text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05), 0px 3px 19px rgba(58, 41, 62, 0.06);
+  --hero-card-shadow: 0px 37px 37px rgba(0, 0, 0, 0.09), 0px 9px 20px rgba(0, 0, 0, 0.1);
+  --hero-card-border: transparent;
+  --hero-heading-weight: bold;
+
+  --vote-agree: oklch(0.65 0.16 145);
+  --vote-disagree: oklch(0.65 0.16 25);
+
+  /* Accent */
+  --accent-icon: oklch(0.7 0.15 267);
+
+  /* Agree / Disagree */
+  --agree: var(--color-agree-900);
+  --agree-foreground: var(--color-agree-300);
+  --agree-icon: var(--color-agree-400);
+
+  --disagree: var(--color-disagree-900);
+  --disagree-foreground: var(--color-disagree-300);
+  --disagree-icon: var(--color-disagree-400);
+}
+
+/*
+ * ============================================
+ * RESULTS SURFACE — opinion group palette
+ * ============================================
+ * Scoped to one surface, not to the theme system. Everything above this line is
+ * a token any consumer of the design system draws from; these are the results
+ * surface's own data palette, carried here so its bridge-score components can
+ * live in the package — not because they generalise. Nothing else should reach
+ * for a `--results-group-*` token: if a second surface needs opinion-group
+ * colour, promote it out of this section deliberately rather than by reference.
+ *
+ * Theme-agnostic and light-only, both on purpose. A cluster is a cluster
+ * whichever campaign it belongs to, so these hold across every theme rather
+ * than varying per `data-theme`; and IFC, the only consumer, ships light-only.
+ *
+ * Group slot order is the run's — groups largest first — and carries no meaning.
+ * Colour is never the only channel: every surface that uses these pairs them
+ * with a shape (circle / square / triangle / diamond) and a name, so the
+ * encoding survives both colour blindness and greyscale printing.
+ *
+ * Deliberately no blue and no red. The results surface also reports party
+ * affiliation, and a blue-to-red pair would invite reading
+ * Democrat-to-Republican into clusters that are emergent voting blocs, not
+ * parties. The party palette stays in the app for exactly that reason — there,
+ * that reading is the correct one, and keeping the two families apart is what
+ * protects it.
+ *
+ * `-ink` is the text-safe variant, >= 4.5:1 on the dimmest surface a label sits
+ * on; the bare token is the mark fill, >= 3:1 as a graphic. Where the two are
+ * equal the mark already cleared the text floor.
+ *
+ * Validated with the dataviz skill's validate_palette.js at `--pairs all`:
+ * worst-pair dE 14.5 (deutan) / 17.7 (normal), against floors of 8 and 15.
+ * FOUR SLOTS ARE VALIDATED, one more than the product publishes. k defaults to
+ * 3 and a campaign's results_interface_settings row can lower it, so a run
+ * carries two or three groups; MAX_PUBLISHED_GROUP_SLOTS in
+ * @deliberations/ifc-db caps it at 3 and the admin's group-count form enforces
+ * that, so a k this palette cannot draw is never saveable. The fourth slot is
+ * deliberate headroom for raising that ceiling. A run past the validated slots
+ * falls back to a neutral mark rather than silently extending the ramp, and
+ * adding a fifth means re-running the check — excluding blue and red leaves
+ * little room, and the near misses were real.
+ */
+:root {
+  --results-group-1: #a08431;
+  --results-group-1-ink: #816614;
+  --results-group-2: #683195;
+  --results-group-2-ink: #4e177b;
+  --results-group-3: #a9689a;
+  --results-group-3-ink: #8f4e81;
+  --results-group-4: #4e5f11;
+  --results-group-4-ink: #323c06;
+
+  /* Nobody's colour, on purpose: the groups a chart is not marking go flat grey
+     rather than a tint of any group. Two steps, two roles: -100 is the emptier
+     one — the unmarked bar in the detail chart, the inactive group-size bar, and
+     the mini's track on a card — and -200 is the share the mini fills with, on
+     every surface. Only the track moves, going card-white on a tinted row where
+     -100 would sit too close to the tint; a share lighter than its own track
+     would put the dark mass on the headroom. Cooler than --color-neutral-*,
+     which is warm topaz; a warm grey beside these hues reads as a fifth group.
+     Both sit below the 3:1 graphic floor, so neither may ever be the channel a
+     reading depends on: draw them in an enclosed track (the bridge bars), or let
+     them carry context beside a marked bar that holds the figure (the group size
+     bars). On a tinted row that enclosure is weak — a card-white track is 1.16:1
+     off the tint — and the -200 fill at 1.50:1 is what carries the shape. */
+  --results-group-neutral-100: #dcdfe5;
+  --results-group-neutral-200: #bfc4d1;
+
+  /* The de-emphasised state: a group keeps its own hue and loses its weight, so
+     a dimmed mark still says which group it is. */
+  --results-group-dim-opacity: 0.2;
+
+  /* The bridge bars' minimum rule. Lighter than muted-foreground so the dashes
+     read as a guide rather than as data, and below the 3:1 graphic floor on
+     purpose — the emphasised bar and the score both carry the figure, so the
+     rule is redundant with each of them. */
+  --bridge-score-rule: #908c96;
+}
+
+/*
+ * ============================================
+ * RESULTS SURFACE — chart layout
+ * ============================================
+ * A chart's own width, as a variable rather than only a Tailwind class, so a
+ * caller can line a grid track up against it. Tailwind scans source as text and
+ * cannot read a JS constant inside an arbitrary value, so a caller that needs
+ * the number in a `grid-cols-[...]` template had no way to reach the exported
+ * constant and spelled it again — which is how two places end up disagreeing
+ * about one chart's width. Each component keeps the literal as a `var()`
+ * fallback, so a registry install without `base` still gets its own geometry.
+ */
+:root {
+  --group-bridge-max-w: 23rem;
+  --vote-distribution-mini-w: 72px;
+}
+
+/*
+ * ============================================
+ * RESULTS SURFACE — importance bar
+ * ============================================
+ * ImportanceBar drew itself out of the `--results-group-*` palette above, which
+ * that section reserves for opinion-group colour. Nothing about an importance
+ * ratio is group-keyed, so it owns these instead.
+ *
+ * Colour follows the row's INTERACTION STATE, never the ratio. Side and length
+ * already carry above-vs-below and how far, so a ramp keyed to the ratio would
+ * be a second channel saying what the first already says.
+ *
+ * The ladder mirrors the bridge column beside it — neutral at rest, the hue
+ * arriving on row hover, resolved on selection — so two adjacent columns answer
+ * the pointer the same way. `-rest` is bridge's own neutral by reference and not
+ * by copy: two independent greys one column apart measured dE 15.8 apart, which
+ * reads as a mismatch rather than as a pair. That is the one deliberate
+ * exception to the rule above that nothing reaches for a `--results-group-*`
+ * token — the point here IS to be that colour, and an alias keeps the two in
+ * step if it ever moves. The arithmetic is not shared: bridge reveals at a 50%
+ * mix, which for this hue lands at 1.89:1 and reads as nothing arriving at all,
+ * so `-hover` is an 80% mix instead.
+ *
+ * Only `-selected` (3.92:1) clears the 3:1 graphic floor, the same bargain the
+ * bridge bars strike beside it: `-rest` (1.75:1) and `-hover` (2.92:1) sit under
+ * it, and neither is ever the channel a reading depends on — the `2.1x` numeral
+ * against the bar holds the figure, as bridge's `65%` readout does for its own
+ * rest bars. If that numeral ever leaves this column, both steps need revisiting
+ * with it. `-selected` also stays far under the row headline's 14.78:1, so the
+ * bar annotates the text rather than competing with it. `-rule` and `-tick` are
+ * chrome and sit below the floor for the same reason they always did.
+ *
+ * `-selected` is dE 7.8 from `--results-group-1`: deliberate, since the two only
+ * ever light up together on one row and never as competing series. Light-only
+ * and theme-agnostic, matching the group palette above.
+ */
+:root {
+  --importance-rest: var(--results-group-neutral-200);
+  --importance-hover: #ce8833;
+  --importance-selected: #c26a00;
+  --importance-rule: #a3a3a3;
+  --importance-tick: #d4d4d4;
+}
+
+/*
+ * ── Toast tone scales ────────────────────────────────────────────────────────
+ * The four tone ramps Toast reads for its background and border. Kept as raw
+ * --<tone>-<step> vars rather than the semantic --success / --destructive pairs
+ * because Toast was promoted verbatim from ideasforchange.org, which defines the
+ * same names in its own globals.css. The -700 text steps the component also
+ * asks for are absent here exactly as they are absent there, so the promoted
+ * component renders identically to the original.
+ */
+:root {
+  --success-50: #f0fdf4;
+  --success-200: #bbf7d0;
+
+  --error-50: #fef1f3;
+  --error-200: #fcccd4;
+
+  --warning-50: #fffaed;
+  --warning-200: #ffe9a8;
+
+  --information-50: #f0f7ff;
+  --information-200: #b8dbff;
+}

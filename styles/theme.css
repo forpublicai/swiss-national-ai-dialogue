@@ -1,0 +1,978 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./tokens.css";
+
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ============================================
+ * TAILWIND THEME REGISTRATION
+ * ============================================
+ * Maps CSS variables → Tailwind utility classes.
+ * Uses `@theme inline` so utilities reference vars at runtime,
+ * enabling theme switching via data-theme attribute.
+ */
+@theme inline {
+  /* Fonts — resolved from --theme-font-* set per data-theme */
+  --font-sans: var(--theme-font-sans);
+  --font-serif: var(--theme-font-serif);
+  --font-display: var(--theme-font-display);
+  --font-mono: var(--theme-font-mono);
+  --font-ui: var(--theme-font-ui);
+
+  /* Semantic colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-icon: var(--icon);
+  --color-muted-icon: var(--muted-icon);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-icon: var(--primary-icon);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-icon: var(--secondary-icon);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-card-icon: var(--card-icon);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-icon: var(--accent-icon);
+
+  --color-muted: var(--muted);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-agree: var(--agree);
+  --color-agree-foreground: var(--agree-foreground);
+  --color-agree-icon: var(--agree-icon);
+
+  --color-disagree: var(--disagree);
+  --color-disagree-foreground: var(--disagree-foreground);
+  --color-disagree-icon: var(--disagree-icon);
+
+  --color-border: var(--border);
+  --color-border-dim: var(--border-dim);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar-background: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+
+  /* Palettes */
+  --color-white: var(--color-white);
+
+  --color-neutral-50: var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-900: var(--color-neutral-900);
+  --color-neutral-950: var(--color-neutral-950);
+
+  --color-accent-50: var(--color-accent-50);
+  --color-accent-100: var(--color-accent-100);
+  --color-accent-200: var(--color-accent-200);
+  --color-accent-300: var(--color-accent-300);
+  --color-accent-400: var(--color-accent-400);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-600: var(--color-accent-600);
+  --color-accent-700: var(--color-accent-700);
+  --color-accent-800: var(--color-accent-800);
+  --color-accent-900: var(--color-accent-900);
+  --color-accent-950: var(--color-accent-950);
+
+  --color-agree-50: var(--color-agree-50);
+  --color-agree-100: var(--color-agree-100);
+  --color-agree-200: var(--color-agree-200);
+  --color-agree-300: var(--color-agree-300);
+  --color-agree-400: var(--color-agree-400);
+  --color-agree-500: var(--color-agree-500);
+  --color-agree-600: var(--color-agree-600);
+  --color-agree-700: var(--color-agree-700);
+  --color-agree-800: var(--color-agree-800);
+  --color-agree-900: var(--color-agree-900);
+  --color-agree-950: var(--color-agree-950);
+
+  --color-disagree-50: var(--color-disagree-50);
+  --color-disagree-100: var(--color-disagree-100);
+  --color-disagree-200: var(--color-disagree-200);
+  --color-disagree-300: var(--color-disagree-300);
+  --color-disagree-400: var(--color-disagree-400);
+  --color-disagree-500: var(--color-disagree-500);
+  --color-disagree-600: var(--color-disagree-600);
+  --color-disagree-700: var(--color-disagree-700);
+  --color-disagree-800: var(--color-disagree-800);
+  --color-disagree-900: var(--color-disagree-900);
+  --color-disagree-950: var(--color-disagree-950);
+
+  --color-bridging-50: var(--color-bridging-50);
+  --color-bridging-100: var(--color-bridging-100);
+  --color-bridging-200: var(--color-bridging-200);
+  --color-bridging-300: var(--color-bridging-300);
+  --color-bridging-400: var(--color-bridging-400);
+  --color-bridging-500: var(--color-bridging-500);
+  --color-bridging-600: var(--color-bridging-600);
+  --color-bridging-700: var(--color-bridging-700);
+  --color-bridging-800: var(--color-bridging-800);
+  --color-bridging-900: var(--color-bridging-900);
+  --color-bridging-950: var(--color-bridging-950);
+
+  /* Shadow scale */
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  /* Radius scale */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 24px;
+
+  /* Layout width scale (Tailwind: max-w-card, max-w-app) */
+  --container-card: 28rem;
+  --container-app: 60rem;
+
+  /* Component tokens: Button */
+  --color-button-primary-bg: var(--button-primary-bg);
+  --color-button-primary-fg: var(--button-primary-fg);
+  --color-button-neutral-bg: var(--button-neutral-bg);
+  --color-button-neutral-fg: var(--button-neutral-fg);
+  --color-button-link: var(--button-link-color);
+
+  /* Component tokens: Button — agree/disagree */
+  --color-button-agree-bg: var(--button-agree-bg);
+  --color-button-agree-fg: var(--button-agree-fg);
+  --color-button-agree-border: var(--button-agree-border);
+  --color-button-agree-icon: var(--button-agree-icon);
+  --color-button-disagree-bg: var(--button-disagree-bg);
+  --color-button-disagree-fg: var(--button-disagree-fg);
+  --color-button-disagree-border: var(--button-disagree-border);
+  --color-button-disagree-icon: var(--button-disagree-icon);
+
+  /* Component tokens: Checkbox */
+  --color-checkbox-checked-bg: var(--checkbox-checked-bg);
+  --color-checkbox-checked-fg: var(--checkbox-checked-fg);
+  --color-checkbox-checked-border: var(--checkbox-checked-border);
+
+  /* Component tokens: Hero */
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-card-border: var(--hero-card-border);
+
+  /* Results surface: opinion group palette — see the section in tokens.css for
+     the rule these follow. --bridge-score-rule is deliberately unmapped: it is
+     only ever a gradient stop, where a colour utility could not reach it. */
+  --color-results-group-1: var(--results-group-1);
+  --color-results-group-1-ink: var(--results-group-1-ink);
+  --color-results-group-2: var(--results-group-2);
+  --color-results-group-2-ink: var(--results-group-2-ink);
+  --color-results-group-3: var(--results-group-3);
+  --color-results-group-3-ink: var(--results-group-3-ink);
+  --color-results-group-4: var(--results-group-4);
+  --color-results-group-4-ink: var(--results-group-4-ink);
+  --color-results-group-neutral-100: var(--results-group-neutral-100);
+  --color-results-group-neutral-200: var(--results-group-neutral-200);
+
+  /* Results surface: importance bar. The three state steps are mapped because
+     the reveal is a class swap on row hover; the rule and tick are only ever
+     inline style values, like --bridge-score-rule above. */
+  --color-importance-rest: var(--importance-rest);
+  --color-importance-hover: var(--importance-hover);
+  --color-importance-selected: var(--importance-selected);
+}
+
+/*
+ * ============================================
+ * BASE STYLES
+ * ============================================
+ * Minimal shadcn base — body background/color and border defaults.
+ */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  [data-theme="bridge"] {
+    font-family: var(--font-sans);
+  }
+}
+
+@utility text-gradient-bridging {
+  background-image: var(--gradient-bridging);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Standard centered content column for stacked sections (FAQ, How It Works,
+ * footer …): full width up to a readable max, centered, with the page gutter.
+ * Pair with a full-bleed section wrapper so backgrounds span edge to edge. */
+@utility app-container {
+  width: 100%;
+  max-width: var(--container-app);
+  margin-inline: auto;
+  padding-inline: 1rem; /* 16px gutter (px-4) */
+}
+
+/*
+ * ============================================
+ * PROSE THEME OVERRIDES
+ * ============================================
+ * Adjust @tailwindcss/typography heading styles per visual theme.
+ * Must be in @layer base so utility classes (font-sans, font-serif) can override.
+ */
+@layer base {
+
+  [data-theme="bridge"] :is(.prose) :is(h1, h2, h3, h4) {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* Default: clean sans headings */
+  [data-theme="default"] :is(.prose) :is(h1, h2, h3, h4) {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
+
+/*
+ * ============================================
+ * COMPONENT: Button
+ * ============================================
+ * Base styles are now in the CVA class string (button.tsx)
+ * so they apply even when data-slot is overridden by Radix
+ * asChild (e.g. DialogTrigger, SheetTrigger).
+ */
+
+/*
+ * ============================================
+ * COMPONENT: Card
+ * ============================================
+ * All visual styles live here; the component only renders data-slot
+ * and data-variant attributes. Themes override via data-theme selectors.
+ */
+
+[data-slot="card"] {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background-color: var(--card);
+  font-family: var(--font-sans);
+  color: var(--card-foreground);
+}
+
+[data-slot="card"][data-selected] {
+  position: relative;
+  border-color: transparent;
+  background-color: var(--accent);
+}
+
+[data-slot="card"][data-selected]::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--card-radius) + 2px);
+  padding: 2px;
+  background: var(--gradient-bridging);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+[data-slot="vote-chips"] {
+  font-family: var(--font-sans);
+}
+
+[data-slot="text"] {
+  font-family: var(--font-sans);
+}
+[data-slot="text"]:is([data-variant="display"], [data-variant="headline"], [data-variant="body-lg-legacy"], [data-variant="body-legacy"]) {
+  font-family: var(--font-serif);
+}
+[data-slot="text"]:is([data-variant="display-legacy"], [data-variant="headline-legacy"], [data-variant="title-lg-legacy"], [data-variant="title-legacy"]) {
+  font-family: var(--font-display);
+}
+
+[data-slot="card"][data-variant="voting"],
+[data-slot="card"][data-variant="idea"],
+[data-slot="card"][data-variant="goal"],
+[data-slot="card"][data-variant="policy"] {
+  padding-block: 0;
+  overflow: hidden;
+  border-radius: var(--card-elevated-radius);
+  box-shadow: var(--card-elevated-shadow);
+  border-color: var(--card-elevated-border);
+}
+
+[data-slot="card"][data-variant="voting"] {
+  height: 300px;
+}
+
+[data-slot="card"][data-variant="idea"] {
+  height: 100%;
+}
+
+/* Goal and policy cards size by aspect ratio (matching the CardStack 343×464
+ * frame) rather than a fixed height, so width is capped by a max-width wrapper
+ * and height follows responsively. */
+[data-slot="card"][data-variant="goal"],
+[data-slot="card"][data-variant="policy"] {
+  aspect-ratio: 343 / 464;
+}
+
+[data-slot="card-header"] {
+  container-type: inline-size;
+  container-name: card-header;
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-template-rows: auto auto;
+  align-items: start;
+  gap: 0.5rem;
+  padding-inline: 1.5rem;
+
+  &:has([data-slot="card-action"]) {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+[data-slot="card-header"].border-b {
+  padding-bottom: 1.5rem;
+}
+
+[data-slot="card-title"] {
+  line-height: var(--text-title-line);
+}
+
+[data-slot="card-description"] {
+  color: var(--muted-foreground);
+  font-size: var(--text-body-sm-size);
+}
+
+[data-slot="card-action"] {
+  grid-column-start: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
+  justify-self: end;
+}
+
+[data-slot="card-content"] {
+  padding-inline: 1.5rem;
+}
+
+[data-slot="card-footer"] {
+  display: flex;
+  align-items: center;
+  padding-inline: 1.5rem;
+}
+
+[data-slot="card-footer"].border-t {
+  padding-top: 1.5rem;
+}
+
+/* Editorial theme: newspaper-style cards */
+[data-theme="bridge"] [data-slot="card"] {
+  padding: 1rem;
+  gap: 1rem;
+  border: none;
+}
+
+[data-theme="bridge"] :is([data-slot="card-header"], [data-slot="card-content"], [data-slot="card-footer"]) {
+  padding-inline: 0;
+}
+
+/* HomeShell's city list: rows own their padding so their text aligns with
+   the section column; the un-layered bridge card rule above would otherwise
+   inset everything by 1rem (see issue #4387). */
+[data-name="home-shell-cities"][data-slot="card"] {
+  padding: 0.75rem 0;
+  gap: 0;
+}
+
+/*
+ * ============================================
+ * COMPONENT: Dialog
+ * ============================================
+ * Visual styles live here; the component only keeps animation
+ * classes (tw-animate-css) that can't be expressed in plain CSS.
+ */
+
+[data-slot="dialog-overlay"] {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgb(0 0 0 / 0.3);
+  backdrop-filter: blur(2px);
+}
+
+[data-slot="dialog-content"] {
+  position: fixed;
+  z-index: 50;
+  display: grid;
+  width: 100%;
+  gap: 1rem;
+  border: var(--dialog-border);
+  background-color: var(--background);
+  padding: 1rem;
+  outline: none;
+  font-family: var(--font-sans);
+  border-radius: var(--dialog-radius);
+  box-shadow: var(--dialog-shadow);
+}
+
+[data-slot="dialog-content"][data-position="center"] {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  max-width: calc(100% - 2rem);
+}
+
+@media (min-width: 640px) {
+  [data-slot="dialog-content"][data-position="center"] {
+    max-width: 32rem;
+  }
+}
+
+[data-slot="dialog-content"][data-position="banner"] {
+  bottom: var(--dialog-banner-bottom);
+  left: var(--dialog-banner-left);
+  max-width: var(--dialog-banner-max-w);
+  transform: none;
+}
+
+/* Close button within dialog content */
+[data-slot="dialog-header"] {
+  padding-right: 2.5rem;
+}
+
+[data-slot="dialog-content"] > [data-slot="dialog-close"] {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  /* Above a sticky/opaque content header (z-10) so a scrollable body that
+     pins its header can't paint over the frame-pinned close. */
+  z-index: 20;
+  outline: none;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--ring);
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &[data-state="open"] {
+    background-color: var(--accent);
+    color: var(--muted-foreground);
+  }
+
+  & svg {
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  & svg:not([class*="size-"]) {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+[data-slot="dialog-header"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+[data-slot="dialog-footer"] {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/*
+ * ============================================
+ * COMPONENT: Sheet
+ * ============================================
+ * Slide-out panel. Visual styles + side-specific positioning live here;
+ * component only keeps animation classes (tw-animate-css).
+ */
+
+[data-slot="sheet-overlay"] {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+[data-slot="sheet-content"] {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--background);
+  padding: 1rem;
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  font-family: var(--font-sans);
+}
+
+[data-slot="sheet-content"][data-side="top"] {
+  inset-inline: 0;
+  top: 0;
+  border-bottom: 1px solid var(--border);
+  border-bottom-left-radius: var(--card-radius);
+  border-bottom-right-radius: var(--card-radius);
+}
+
+[data-slot="sheet-content"][data-side="right"] {
+  inset-block: 0;
+  right: 0;
+  height: 100%;
+  width: 75%;
+  border-left: 1px solid var(--border);
+  border-top-left-radius: var(--card-radius);
+  border-bottom-left-radius: var(--card-radius);
+}
+
+[data-slot="sheet-content"][data-side="bottom"] {
+  inset-inline: 0;
+  bottom: 0;
+  border-top: 1px solid var(--border);
+  border-top-left-radius: var(--card-radius);
+  border-top-right-radius: var(--card-radius);
+}
+
+
+[data-slot="sheet-content"][data-side="left"] {
+  inset-block: 0;
+  left: 0;
+  height: 100%;
+  width: 75%;
+  border-right: 1px solid var(--border);
+  border-top-right-radius: var(--card-radius);
+  border-bottom-right-radius: var(--card-radius);
+}
+
+.dark [data-slot="sheet-content"][data-side="top"] { border-color: var(--border-dim); }
+.dark [data-slot="sheet-content"][data-side="right"] { border-color: var(--border-dim); }
+.dark [data-slot="sheet-content"][data-side="bottom"] { border-color: var(--border-dim); }
+.dark [data-slot="sheet-content"][data-side="left"] { border-color: var(--border-dim); }
+
+/* Bridge wordmark — show the artwork variant matching the active color mode.
+   Mirrors the token light/dark logic: explicit .dark/.light class, OR the
+   prefers-color-scheme media query when no class is forced (colorMode="system"). */
+[data-slot="bridge-wordmark"] > [data-variant="dark"] { display: none; }
+.dark [data-slot="bridge-wordmark"] > [data-variant="light"] { display: none; }
+.dark [data-slot="bridge-wordmark"] > [data-variant="dark"] { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) [data-slot="bridge-wordmark"] > [data-variant="light"] { display: none; }
+  :root:not(.light) [data-slot="bridge-wordmark"] > [data-variant="dark"] { display: block; }
+}
+
+@media (min-width: 640px) {
+  [data-slot="sheet-content"][data-side="right"],
+  [data-slot="sheet-content"][data-side="left"] {
+    max-width: 24rem;
+  }
+}
+
+/* Sheet header + close button */
+[data-slot="sheet-header"] {
+  padding-right: 2.5rem;
+}
+
+[data-slot="sheet-content"] > [data-slot="sheet-close"] {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  /* Above a sticky/opaque content header (z-10) — see dialog-close. */
+  z-index: 20;
+  outline: none;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--ring);
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &[data-state="open"] {
+    background-color: var(--accent);
+    color: var(--muted-foreground);
+  }
+
+  & svg {
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  & svg:not([class*="size-"]) {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+[data-slot="sheet-header"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+[data-slot="sheet-footer"] {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  [data-slot="sheet-footer"] {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+/*
+ * ============================================
+ * COMPONENT: Checkbox
+ * ============================================
+ */
+
+[data-slot="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border-radius: 3px;
+  border: 1px solid var(--input);
+  box-shadow: var(--shadow-sm);
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+  outline: none;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px var(--ring);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &[data-state="checked"] {
+    background-color: var(--checkbox-checked-bg);
+    color: var(--checkbox-checked-fg);
+    border-color: var(--checkbox-checked-border);
+  }
+}
+
+[data-slot="checkbox-indicator"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+
+  & svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+/*
+ * ============================================
+ * COMPONENT: Label
+ * ============================================
+ */
+
+[data-slot="label"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-label-size);
+  line-height: var(--text-label-line);
+  font-family: var(--font-sans);
+  font-weight: var(--text-label-weight);
+  user-select: none;
+}
+
+/* Disabled state via parent group */
+[data-disabled="true"] [data-slot="label"] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Disabled state via sibling input/checkbox */
+:disabled ~ [data-slot="label"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/*
+ * ============================================
+ * COMPONENT: Input / Textarea
+ * ============================================
+ * Unlayered so disabled/invalid states beat Tailwind utilities.
+ */
+
+[data-slot="input"],
+[data-slot="textarea"] {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  padding: 0.375rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-line);
+  color: var(--foreground);
+  outline: none;
+  box-shadow: var(--shadow-sm);
+  transition: color 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+
+  .dark & {
+    background-color: oklch(from var(--input) l c h / 0.3);
+  }
+
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  &:focus-visible {
+    border-color: var(--ring);
+    box-shadow:
+      0 0 0 3px oklch(from var(--ring) l c h / 0.5);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--destructive);
+    box-shadow:
+      0 0 0 3px oklch(from var(--destructive) l c h / 0.2);
+
+    .dark & {
+      box-shadow:
+        0 0 0 3px oklch(from var(--destructive) l c h / 0.4);
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+[data-slot="input"] {
+  height: 2.25rem; /* h-9 */
+}
+
+/* File input variant */
+[data-slot="input"][type="file"] {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+[data-slot="input"][type="file"]::file-selector-button {
+  display: inline-flex;
+  height: 1.75rem;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--muted);
+  padding-inline: 0.75rem;
+  margin: calc(0.25rem - 1px) 0.75rem calc(0.25rem - 1px) 0.25rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-label-sm-size);
+  font-weight: var(--button-font-weight);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 150ms ease;
+
+  &:hover {
+    background-color: var(--background);
+    border-color: var(--input);
+  }
+}
+
+/*
+ * ============================================
+ * KEYFRAMES
+ * ============================================
+ * Animation keyframes consumed by exported components.
+ */
+/* Toast entrance: rises into place from off the bottom edge. */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+@keyframes waffle-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Page-load reveal (HomeShell hero choreography): fade with a slight rise. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Marquee strip (consensus ticker): content is rendered twice, the track
+ * slides one copy's width for a seamless loop. */
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Auto-advance countdown (deck progress pixels): the active pixel's fill
+ * sweeps left-to-right over one cycle. */
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Atmosphere blobs (HomeShell hero): a slow drift so the glow field
+ * breathes instead of sitting flat. Runs alternate, so `both` ends meet. */
+@keyframes glow-drift {
+  to {
+    transform: translate3d(0, -24px, 0) scale(1.12);
+  }
+}
+
+/* Scroll-driven reveal for stacked sections (Chromium's view() timeline;
+ * other engines and reduced-motion users just see the element as-is). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-rise {
+      animation: rise-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+/* Post-submit share state (AddIdeaCardContent): content fades in with a
+ * slight rise as the card flips from the draft form in place. */
+@keyframes share-state-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+ * ============================================
+ * REDUCED MOTION
+ * ============================================
+ * Respect prefers-reduced-motion for all CSS animations and transitions.
+ * Framer Motion is handled separately via MotionConfig reducedMotion="user".
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

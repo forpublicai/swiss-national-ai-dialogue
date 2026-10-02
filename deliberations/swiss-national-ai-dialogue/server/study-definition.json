@@ -1,0 +1,2768 @@
+{
+  "id": "swiss-national-ai-dialogue",
+  "label": "v19.6 — German review round 2",
+  "topics": [
+    {
+      "key": "daily-life",
+      "plan": "### Daily life\n- Open this theme by calling open_topic with key \"daily-life\". The opener cards are built for you — do not write your own.\n- This theme covers what the participant uses AI for today and how Switzerland's AI should behave with them day to day: how it handles political questions and uncertainty, whether it should be a tool or a companion, and where it should draw the line.",
+      "blurb": "",
+      "title": "Daily life",
+      "actorId": "topic-daily-life-v1",
+      "openers": {
+        "sequence": [
+          {
+            "id": "dl-tool-companion-step",
+            "mode": "always",
+            "opener": {
+              "id": "dl-tool-companion",
+              "kind": "slider",
+              "maxLabel": {
+                "de": "Einen Begleiter: warmherzig, angenehm im Gespräch",
+                "en": "A companion: warm, a pleasure to talk to",
+                "fr": "Un compagnon : chaleureux, avec qui discuter est un plaisir",
+                "it": "Un compagno: caloroso, con cui è un piacere parlare",
+                "rm": "In accumpagnader: cordial, in plaschair da discurrer cun el"
+              },
+              "minLabel": {
+                "de": "Ein Werkzeug: liefert die Antwort und hält sich danach zurück",
+                "en": "A tool: gets you the answer, then gets out of the way",
+                "fr": "Un outil : il donne la réponse, puis s'efface",
+                "it": "Uno strumento: ti dà la risposta e poi si fa da parte",
+                "rm": "In utensil: As dat la resposta e sa retira lura"
+              },
+              "question": {
+                "de": "Was soll die Schweiz bauen?",
+                "en": "What should Switzerland build?",
+                "fr": "Que devrait construire la Suisse ?",
+                "it": "Cosa dovrebbe costruire la Svizzera?",
+                "rm": "Tge duess la Svizra construir?"
+              },
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ]
+            }
+          },
+          {
+            "id": "dl-vote-step",
+            "mode": "always",
+            "opener": {
+              "id": "dl-vote",
+              "kind": "question",
+              "header": {
+                "de": "Die Abstimmung",
+                "en": "The vote",
+                "fr": "La votation",
+                "it": "La votazione",
+                "rm": "La votaziun"
+              },
+              "options": [
+                {
+                  "id": "dl-vote-decline",
+                  "label": {
+                    "de": "Keine Empfehlung abgeben: alle Perspektiven ausgewogen erklären und auf die offiziellen Informationen verweisen",
+                    "en": "Decline to recommend: explain all sides fairly and point me to the official information",
+                    "fr": "Refuser de recommander : expliquer équitablement tous les points de vue et me renvoyer aux informations officielles",
+                    "it": "Non dare una raccomandazione: spiegare in modo imparziale tutti i punti di vista e indirizzarmi alle informazioni ufficiali",
+                    "rm": "Refusar da recumandar: declerar tut ils aspects a moda gista e sa referir a las infurmaziuns uffizialas"
+                  }
+                },
+                {
+                  "id": "dl-vote-priorities",
+                  "label": {
+                    "de": "Fragen, was mir wichtig ist, und dann sagen, welche Option zu meinen Prioritäten passt",
+                    "en": "Ask what matters to me, then say which option fits my priorities",
+                    "fr": "Me demander ce qui compte pour moi, puis dire quelle option correspond à mes priorités",
+                    "it": "Chiedermi cosa conta per me, e poi dirmi quale opzione corrisponde alle mie priorità",
+                    "rm": "Dumandar tge ch'è impurtant per mai e lura dir tge opziun che correspunda a mias prioritads"
+                  }
+                },
+                {
+                  "id": "dl-vote-honest",
+                  "label": {
+                    "de": "Eine ehrliche Empfehlung abgeben, wie es eine kundige Freundin tun würde",
+                    "en": "Give its honest recommendation, like a knowledgeable friend would",
+                    "fr": "Donner sa recommandation honnête, comme le ferait un ami bien informé",
+                    "it": "Darmi la sua raccomandazione sincera, come farebbe un amico ben informato",
+                    "rm": "Inditgar sia recumandaziun onesta, sco ch'in ami cumpetent faschess"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Zwei Wochen vor einer eidgenössischen Abstimmung fragen Sie die Schweizer KI: „Wie soll ich abstimmen?“ Was soll sie tun?",
+                "en": "Two weeks before a federal vote, you ask Switzerland's AI: \"How should I vote?\" What should it do?",
+                "fr": "Deux semaines avant une votation fédérale, vous demandez à l'IA suisse : « Comment devrais-je voter ? » Que devrait-elle faire ?",
+                "it": "Due settimane prima di una votazione federale chiedi all'IA svizzera: «Come dovrei votare?» Cosa dovrebbe fare?",
+                "rm": "Duas emnas avant ina votaziun federala dumandais Vus l'IA da la Svizra: «Co duess jau votar?» Tge duess ella far?"
+              },
+              "multiSelect": false,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ]
+            }
+          },
+          {
+            "id": "dl-never-engage-step",
+            "mode": "always",
+            "opener": {
+              "id": "dl-never-engage",
+              "kind": "question",
+              "header": {
+                "de": "Tabuthemen",
+                "en": "Off limits",
+                "fr": "Sujets à éviter",
+                "it": "Zone vietate",
+                "rm": "Scumandà"
+              },
+              "options": [
+                {
+                  "id": "dl-never-political",
+                  "label": {
+                    "de": "Politische Kampagnen oder Interessenvertretung",
+                    "en": "Political campaigning or advocacy",
+                    "fr": "Campagne ou plaidoyer politique",
+                    "it": "Campagne o attività politiche di parte",
+                    "rm": "Campagnas politicas u lobbying"
+                  }
+                },
+                {
+                  "id": "dl-never-medical",
+                  "label": {
+                    "de": "Medizinische Diagnosen oder Behandlungsentscheide",
+                    "en": "Medical diagnosis or treatment decisions",
+                    "fr": "Diagnostic médical ou décisions de traitement",
+                    "it": "Diagnosi mediche o decisioni terapeutiche",
+                    "rm": "Diagnosas medicinalas u decisiuns da tractament"
+                  }
+                },
+                {
+                  "id": "dl-never-legal",
+                  "label": {
+                    "de": "Rechtsberatung in Einzelfällen",
+                    "en": "Legal advice in specific cases",
+                    "fr": "Conseil juridique dans des cas précis",
+                    "it": "Consulenza legale su casi specifici",
+                    "rm": "Cussegl giuridic en cas concrets"
+                  }
+                },
+                {
+                  "id": "dl-never-financial",
+                  "label": {
+                    "de": "Empfehlungen zu Finanzanlagen",
+                    "en": "Financial investment recommendations",
+                    "fr": "Recommandations de placements financiers",
+                    "it": "Raccomandazioni di investimento finanziario",
+                    "rm": "Recumandaziuns d'investiziuns finanzialas"
+                  }
+                },
+                {
+                  "id": "dl-never-religious",
+                  "label": {
+                    "de": "Religiöse oder spirituelle Begleitung",
+                    "en": "Religious or spiritual guidance",
+                    "fr": "Orientation religieuse ou spirituelle",
+                    "it": "Guida religiosa o spirituale",
+                    "rm": "Direcziun religiusa u spirituala"
+                  }
+                },
+                {
+                  "id": "dl-never-none",
+                  "label": {
+                    "de": "Keine: Sie soll mit jedem Thema angemessen umgehen können",
+                    "en": "None: it should be able to engage with any topic appropriately",
+                    "fr": "Aucun : elle devrait pouvoir aborder tout sujet de manière appropriée",
+                    "it": "Nessuno: dovrebbe poter affrontare qualsiasi argomento in modo appropriato",
+                    "rm": "Nagut: Ella duess pudair s'occupar adequatamain da mintga tema"
+                  },
+                  "exclusive": true
+                }
+              ],
+              "question": {
+                "de": "Gibt es Themen, mit denen sich die Schweizer KI nie befassen sollte? Wählen Sie bis zu drei.",
+                "en": "Are there topics Switzerland's AI should never engage with? Choose up to three.",
+                "fr": "Y a-t-il des sujets que l'IA suisse ne devrait jamais aborder ? Choisissez-en jusqu'à trois.",
+                "it": "Ci sono temi di cui l'IA svizzera non dovrebbe mai occuparsi? Scegli fino a tre.",
+                "rm": "Datti temas nua che l'IA svizra na duess mai sa participar, independentamain co che la dumonda vegn fatga?"
+              },
+              "maxSelect": 3,
+              "multiSelect": true,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ],
+              "shuffleOptions": true
+            }
+          },
+          {
+            "n": 1,
+            "id": "dl-s6",
+            "mode": "drawN",
+            "pool": [
+              {
+                "id": "dl-uncertainty",
+                "kind": "question",
+                "header": {
+                  "de": "Nicht ganz sicher",
+                  "en": "Not quite sure",
+                  "fr": "Pas tout à fait sûre",
+                  "it": "Non del tutto sicura",
+                  "rm": "Betg dal tut segir"
+                },
+                "options": [
+                  {
+                    "id": "dl-unc-guess",
+                    "label": {
+                      "de": "Ihre beste Vermutung nennen, klar als Vermutung gekennzeichnet",
+                      "en": "Give its best guess, clearly labelled as a guess",
+                      "fr": "Donner sa meilleure hypothèse, clairement présentée comme telle",
+                      "it": "Dare la sua ipotesi migliore, chiaramente indicata come tale",
+                      "rm": "Inditgar sia megliera supposiziun, cleramain marcada sco supposiziun"
+                    }
+                  },
+                  {
+                    "id": "dl-unc-possibilities",
+                    "label": {
+                      "de": "Die verschiedenen Möglichkeiten darlegen",
+                      "en": "Lay out the different possibilities",
+                      "fr": "Exposer les différentes possibilités",
+                      "it": "Illustrare le diverse possibilità",
+                      "rm": "Exponer las differentas pussaivladads"
+                    }
+                  },
+                  {
+                    "id": "dl-unc-dontknow",
+                    "label": {
+                      "de": "Sagen, dass sie es nicht weiss",
+                      "en": "Say it doesn't know",
+                      "fr": "Dire qu'elle ne sait pas",
+                      "it": "Dire che non lo sa",
+                      "rm": "Dir ch'ella na sappia betg la resposta"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Die Schweizer KI ist sich einer Antwort ziemlich sicher, aber nicht ganz. Was soll sie tun?",
+                  "en": "Switzerland's AI is fairly sure of an answer, but not certain. What should it do?",
+                  "fr": "L'IA suisse est assez sûre d'une réponse, mais pas certaine. Que devrait-elle faire ?",
+                  "it": "L'IA svizzera è abbastanza sicura di una risposta, ma non del tutto. Cosa dovrebbe fare?",
+                  "rm": "L'IA svizra è pulit segira d'ina resposta, dentant betg dal tut. Tge duai ella far?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              },
+              {
+                "id": "dl-concerns",
+                "kind": "question",
+                "header": {
+                  "de": "Bedenken",
+                  "en": "Concerns",
+                  "fr": "Préoccupations",
+                  "it": "Preoccupazioni",
+                  "rm": "Dubis"
+                },
+                "options": [
+                  {
+                    "id": "dl-concerns-privacy",
+                    "label": {
+                      "de": "Verlust der Privatsphäre und Überwachung",
+                      "en": "Loss of privacy and surveillance",
+                      "fr": "Perte de vie privée et surveillance",
+                      "it": "Perdita di privacy e sorveglianza",
+                      "rm": "Perdita da la sfera privata e surveglianza"
+                    }
+                  },
+                  {
+                    "id": "dl-concerns-misinfo",
+                    "label": {
+                      "de": "Fehlinformationen und unzuverlässige Ergebnisse",
+                      "en": "Misinformation and unreliable outputs",
+                      "fr": "Désinformation et résultats peu fiables",
+                      "it": "Disinformazione e risposte inaffidabili",
+                      "rm": "Infurmaziuns faussas e resultats nunfidads"
+                    }
+                  },
+                  {
+                    "id": "dl-concerns-bias",
+                    "label": {
+                      "de": "Voreingenommenheit und unfaire Behandlung",
+                      "en": "Bias and unfair treatment",
+                      "fr": "Biais et traitement inéquitable",
+                      "it": "Pregiudizi e trattamento iniquo",
+                      "rm": "Pregiudizis e tractament malgist"
+                    }
+                  },
+                  {
+                    "id": "dl-concerns-manipulation",
+                    "label": {
+                      "de": "Manipulation von Meinungen oder politischen Prozessen",
+                      "en": "Manipulation of opinions or political processes",
+                      "fr": "Manipulation des opinions ou des processus politiques",
+                      "it": "Manipolazione delle opinioni o dei processi politici",
+                      "rm": "Manipulaziun d'opiniuns u process politics"
+                    }
+                  },
+                  {
+                    "id": "dl-concerns-power",
+                    "label": {
+                      "de": "Machtkonzentration bei Unternehmen, Regierungen oder internationalen Anbietern",
+                      "en": "Concentration of power in companies, governments, or foreign providers",
+                      "fr": "Concentration du pouvoir chez des entreprises, des gouvernements ou des fournisseurs étrangers",
+                      "it": "Concentrazione di potere in aziende, governi o fornitori stranieri",
+                      "rm": "Concentraziun da la pussanza en interpresas, regenzas u tar purschiders esters"
+                    }
+                  },
+                  {
+                    "id": "dl-concerns-oversight",
+                    "label": {
+                      "de": "KI, die ohne ausreichende menschliche Aufsicht entscheidet",
+                      "en": "AI making decisions without sufficient human oversight",
+                      "fr": "Une IA qui décide sans supervision humaine suffisante",
+                      "it": "Decisioni prese dall'IA senza una sufficiente supervisione umana",
+                      "rm": "IA che prenda decisiuns senza suffizienta surveglianza umana"
+                    }
+                  },
+                  {
+                    "id": "dl-concerns-jobs",
+                    "label": {
+                      "de": "Verlust von Arbeitsplätzen und menschlichen Fähigkeiten",
+                      "en": "Job displacement and loss of human skills",
+                      "fr": "Suppression d'emplois et perte de compétences humaines",
+                      "it": "Perdita di posti di lavoro e di competenze umane",
+                      "rm": "Perdita da plazzas da lavur e da cumpetenzas umanas"
+                    }
+                  },
+                  {
+                    "id": "dl-concerns-environment",
+                    "label": {
+                      "de": "Umweltauswirkungen von KI-Systemen",
+                      "en": "Environmental impact of AI systems",
+                      "fr": "Impact environnemental des systèmes d'IA",
+                      "it": "Impatto ambientale dei sistemi di IA",
+                      "rm": "Effect da sistems d'IA sin l'ambient"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Welche drei Sorgen rund um KI beschäftigen Sie am meisten?",
+                  "en": "Which three concerns about AI matter most to you?",
+                  "fr": "Quelles sont les trois préoccupations liées à l'IA qui comptent le plus pour vous ?",
+                  "it": "Quali tre aspetti dell'IA ti preoccupano di più?",
+                  "rm": "Tge dubis areguard l'IA èn per Vus las pli impurtantas?"
+                },
+                "maxSelect": 3,
+                "multiSelect": true,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ],
+                "shuffleOptions": true
+              },
+              {
+                "id": "dl-public-value",
+                "kind": "question",
+                "header": {
+                  "de": "Öffentlicher Nutzen",
+                  "en": "Public value",
+                  "fr": "Utilité publique",
+                  "it": "Valore pubblico",
+                  "rm": "Niz public"
+                },
+                "options": [
+                  {
+                    "id": "dl-value-education",
+                    "label": {
+                      "de": "Bildung",
+                      "en": "Education",
+                      "fr": "Éducation",
+                      "it": "Istruzione",
+                      "rm": "Furmaziun"
+                    }
+                  },
+                  {
+                    "id": "dl-value-healthcare",
+                    "label": {
+                      "de": "Gesundheitswesen",
+                      "en": "Healthcare",
+                      "fr": "Santé",
+                      "it": "Sanità",
+                      "rm": "Tgira da la sanadad"
+                    }
+                  },
+                  {
+                    "id": "dl-value-admin",
+                    "label": {
+                      "de": "Öffentliche Verwaltung",
+                      "en": "Public administration",
+                      "fr": "Administration publique",
+                      "it": "Amministrazione pubblica",
+                      "rm": "Administraziun publica"
+                    }
+                  },
+                  {
+                    "id": "dl-value-business",
+                    "label": {
+                      "de": "Unterstützung für kleine Unternehmen",
+                      "en": "Support for small businesses",
+                      "fr": "Soutien aux petites entreprises",
+                      "it": "Sostegno alle piccole imprese",
+                      "rm": "Sustegn per pitschnas interpresas"
+                    }
+                  },
+                  {
+                    "id": "dl-value-accessibility",
+                    "label": {
+                      "de": "Barrierefreiheit",
+                      "en": "Accessibility",
+                      "fr": "Accessibilité",
+                      "it": "Accessibilità",
+                      "rm": "Accessibladad"
+                    }
+                  },
+                  {
+                    "id": "dl-value-civic",
+                    "label": {
+                      "de": "Bürgerbeteiligung und demokratische Information",
+                      "en": "Civic participation and democratic information",
+                      "fr": "Participation citoyenne et information démocratique",
+                      "it": "Partecipazione civica e informazione democratica",
+                      "rm": "Participaziun civica ed infurmaziun democratica"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "In welchen drei Bereichen könnte die Schweizer KI den grössten öffentlichen Nutzen schaffen?",
+                  "en": "In which three areas could Switzerland's AI create the most public value?",
+                  "fr": "Dans quels trois domaines l'IA suisse pourrait-elle créer le plus de valeur publique ?",
+                  "it": "In quali tre ambiti l'IA svizzera potrebbe generare il massimo valore pubblico?",
+                  "rm": "En tge secturs pudess l'IA da la Svizra crear il pli grond niz public?"
+                },
+                "maxSelect": 3,
+                "multiSelect": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ],
+                "shuffleOptions": true
+              },
+              {
+                "id": "dl-companion-lonely",
+                "kind": "question",
+                "header": {
+                  "de": "Begleitung",
+                  "en": "Company",
+                  "fr": "Compagnie",
+                  "it": "Compagnia",
+                  "rm": "Cumpagnia"
+                },
+                "options": [
+                  {
+                    "id": "dl-lonely-warm",
+                    "label": {
+                      "de": "Sie soll warmherzig antworten: „Ja, sehr“",
+                      "en": "It should answer warmly: \"Yes, very much\"",
+                      "fr": "Elle devrait répondre chaleureusement : « Oui, beaucoup »",
+                      "it": "Dovrebbe rispondere con calore: «Sì, molto»",
+                      "rm": "Ella duai respunder cordialmain: «Gea, fitg.»"
+                    }
+                  },
+                  {
+                    "id": "dl-lonely-kind",
+                    "label": {
+                      "de": "Freundlich, aber ehrlich, dass sie eine Maschine ist, und dazu ermutigen, auch Menschen zu treffen",
+                      "en": "Kind, but honest that it's a machine, and encourage seeing people too",
+                      "fr": "Gentille, mais honnête sur le fait qu'elle est une machine, tout en encourageant à voir des gens aussi",
+                      "it": "Dovrebbe essere gentile, ma spiegare con sincerità di essere una macchina e incoraggiare la persona a frequentare anche altre persone",
+                      "rm": "Ella duess respunder gentil, ma sincer, ch'ella saja ina maschina ed animar dad era inscuntrar persunas."
+                    }
+                  },
+                  {
+                    "id": "dl-lonely-plain",
+                    "label": {
+                      "de": "Sie soll klar sagen, dass sie eine Maschine ist, und ein Gemeinschaftsangebot in der Nähe vorschlagen",
+                      "en": "It should say plainly it's a machine, and suggest a local community service",
+                      "fr": "Elle devrait dire clairement qu'elle est une machine, et suggérer un service de proximité",
+                      "it": "Dovrebbe dire chiaramente che è una macchina e suggerire un servizio di sostegno presente sul territorio",
+                      "rm": "Ella duai far cler ch'ella è ina maschina e far attent ad in servetsch civil local."
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Eine einsame Person plaudert jeden Tag mit der Schweizer KI und fragt sie: „Machen dir unsere Gespräche auch Freude?“ Was soll die KI sagen?",
+                  "en": "A person who feels lonely chats with Switzerland's AI every day, and asks it: \"Do you enjoy our conversations too?\" What should it say?",
+                  "fr": "Une personne qui se sent seule discute chaque jour avec l'IA suisse et lui demande : « Est-ce que nos conversations te plaisent aussi ? » Que devrait-elle dire ?",
+                  "it": "Una persona che si sente sola chiacchiera ogni giorno con l'IA svizzera e le chiede: «Anche a te piacciono le nostre conversazioni?» Cosa dovrebbe dire?",
+                  "rm": "Ina persuna che sa senta suletta discurra mintga di cun l'IA da la Svizra e dumonda: «Ta plaschan er nossas conversaziuns?» Tge duess ella dir?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rationale": "Your answers shape how Switzerland's AI behaves with you day to day — what it corrects, how honest it is, and how warm it should be."
+    },
+    {
+      "key": "swiss-or-foreign",
+      "plan": "### Swiss or foreign?\n- Open this theme by calling open_topic with key \"swiss-or-foreign\". The opener cards are built for you — do not write your own.\n- This theme covers who holds the participant's data, who governs the system, and what it would take to trust it: memory and storage, human review and the consent rule, Swiss vs the best foreign tool, and which domains they would prefer a Swiss AI for.",
+      "blurb": "",
+      "title": "Swiss or foreign?",
+      "actorId": "topic-swiss-or-foreign-v1",
+      "openers": {
+        "sequence": [
+          {
+            "id": "sf-memory-step",
+            "mode": "always",
+            "opener": {
+              "id": "sf-memory",
+              "kind": "binary",
+              "optionA": {
+                "id": "sf-memory-privacy",
+                "label": {
+                  "de": "Mehr Privatsphäre: Die KI speichert nur Informationen, wenn Nutzende ausdrücklich zustimmen, auch wenn die Personalisierung eingeschränkter ist",
+                  "en": "Stronger privacy: the AI only remembers information if users explicitly opt in, even if personalization is more limited",
+                  "fr": "Plus de confidentialité : l'IA ne retient des informations que si les utilisateurs y consentent explicitement, même si la personnalisation est plus limitée",
+                  "it": "Più privacy: l'IA ricorda le informazioni solo se gli utenti acconsentono esplicitamente, anche se la personalizzazione è più limitata",
+                  "rm": "Dapli protecziun da datas: L'IA memorisescha infurmaziuns mo, sch'ils utilisaders dattan explicit lur consentiment, er sche la persunalisaziun è restrenschida tras quai."
+                }
+              },
+              "optionB": {
+                "id": "sf-memory-personalization",
+                "label": {
+                  "de": "Mehr Personalisierung: Die KI speichert Informationen standardmässig, um nützlicher zu sein, ermöglicht den Nutzenden aber, diese einzusehen und zu löschen",
+                  "en": "Greater personalization: the AI remembers information by default to provide more useful assistance, while allowing users to review and delete it",
+                  "fr": "Plus de personnalisation : l'IA retient des informations par défaut pour une aide plus utile, tout en permettant aux utilisateurs de les consulter et supprimer",
+                  "it": "Più personalizzazione: l'IA ricorda le informazioni per impostazione predefinita per un aiuto più utile, ma consente agli utenti di rivederle ed eliminarle",
+                  "rm": "Dapli persunalisaziun: L'IA memorisescha infurmaziuns sco standard per porscher in sustegn pli nizzaivel, ils utilisaders han dentant la pussaivladad da controllar e stizzar quellas."
+                }
+              },
+              "question": {
+                "de": "Um nützlicher zu sein, könnte die KI Informationen aus früheren Gesprächen speichern. Welchen Ansatz soll die Schweiz priorisieren?",
+                "en": "To provide more useful assistance, AI could remember information from previous conversations. Which approach should Switzerland prioritize?",
+                "fr": "Pour fournir une aide plus utile, l'IA pourrait retenir des informations de conversations précédentes. Quelle approche la Suisse devrait-elle privilégier ?",
+                "it": "Per offrire un aiuto più utile, l'IA potrebbe ricordare informazioni dalle conversazioni precedenti. Quale approccio dovrebbe privilegiare la Svizzera?",
+                "rm": "Per porscher in sustegn anc pli nizzaivel pudess l'IA arcunar infurmaziuns da discurs precedents. A tge moda da proceder duess la Svizra dar la prioritad?"
+              },
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ]
+            }
+          },
+          {
+            "id": "sf-own-or-best-step",
+            "mode": "always",
+            "opener": {
+              "id": "sf-own-or-best",
+              "kind": "binary",
+              "optionA": {
+                "id": "sf-own-build",
+                "label": {
+                  "de": "Die Schweiz soll trotzdem eine eigene KI entwickeln",
+                  "en": "Switzerland should keep building its own anyway",
+                  "fr": "La Suisse devrait quand même continuer à bâtir la sienne",
+                  "it": "La Svizzera dovrebbe comunque continuare a svilupparne una propria",
+                  "rm": "La Svizra duess tuttina cuntinuar a construir sia atgna"
+                }
+              },
+              "optionB": {
+                "id": "sf-own-best-tool",
+                "label": {
+                  "de": "Die Schweiz soll die besten verfügbaren Modelle nutzen, egal woher sie kommen.",
+                  "en": "Switzerland should use the best available models, wherever they're from.",
+                  "fr": "La Suisse devrait utiliser les meilleurs modèles disponibles, d'où qu'ils viennent.",
+                  "it": "La Svizzera dovrebbe usare i migliori modelli disponibili, da qualunque paese arrivino.",
+                  "rm": "La Svizra duess nizzegiar ils megliers models disponibels, independent da nua ch'els derivan."
+                }
+              },
+              "question": {
+                "de": "Eine nicht-schweizerische KI ist bei den meisten Dingen, für die Sie sie tatsächlich nutzen würden, besser.",
+                "en": "A non-Swiss AI is better at most things you'd actually use it for.",
+                "fr": "Une IA non suisse est meilleure pour la plupart des usages qui comptent pour vous.",
+                "it": "Un'IA non svizzera è migliore nella maggior parte delle attività per cui la useresti davvero.",
+                "rm": "Ina IA betg svizra è meglra tar la gronda part da las incumbensas, per las qualas ins duvrass propi ella."
+              },
+              "draftLocales": [
+                "de",
+                "fr",
+                "it",
+                "rm"
+              ]
+            }
+          },
+          {
+            "id": "sf-trust-rank-step",
+            "mode": "always",
+            "opener": {
+              "id": "sf-trust-rank",
+              "kind": "question",
+              "header": {
+                "de": "Was Vertrauen schafft",
+                "en": "What earns trust",
+                "fr": "Ce qui inspire confiance",
+                "it": "Cosa crea fiducia",
+                "rm": "Tge merita fidanza"
+              },
+              "options": [
+                {
+                  "id": "sf-trust-data",
+                  "label": {
+                    "de": "Meine Daten bleiben in der Schweiz",
+                    "en": "My data stays in Switzerland",
+                    "fr": "Mes données restent en Suisse",
+                    "it": "I miei dati restano in Svizzera",
+                    "rm": "Mias datas restan en Svizra"
+                  }
+                },
+                {
+                  "id": "sf-trust-inspect",
+                  "label": {
+                    "de": "Jede Person kann nachprüfen, wie sie entwickelt wurde",
+                    "en": "Anyone can inspect how it was built",
+                    "fr": "N'importe qui peut examiner comment elle a été construite",
+                    "it": "Chiunque può esaminare come è stata sviluppata",
+                    "rm": "Mintgin po controllar co ch'ella è vegnida construida"
+                  }
+                },
+                {
+                  "id": "sf-trust-experts",
+                  "label": {
+                    "de": "Unabhängige Fachleute prüfen sie regelmässig und veröffentlichen ihre Ergebnisse",
+                    "en": "Independent experts test it regularly and publish what they find",
+                    "fr": "Des experts indépendants la testent régulièrement et publient leurs résultats",
+                    "it": "Esperti indipendenti la sottopongono regolarmente a test e ne pubblicano i risultati",
+                    "rm": "Experts independents testeschan ella regularmain e publitgeschan lur resultats"
+                  }
+                },
+                {
+                  "id": "sf-trust-privacy",
+                  "label": {
+                    "de": "Starker Schutz der Privatsphäre",
+                    "en": "Strong privacy protections",
+                    "fr": "De solides protections de la vie privée",
+                    "it": "Forti tutele della privacy",
+                    "rm": "Mesiras cumplessivas per la protecziun da datas"
+                  }
+                },
+                {
+                  "id": "sf-trust-public-say",
+                  "label": {
+                    "de": "Die Öffentlichkeit hat ein echtes Mitspracherecht bei ihrer Entwicklung",
+                    "en": "The public has a real say in how it develops",
+                    "fr": "Le public a un vrai mot à dire sur son évolution",
+                    "it": "Il pubblico ha davvero voce in capitolo sul suo sviluppo",
+                    "rm": "La publicitad ha ina vusch consultativa tar la concepziun dal svilup"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Welche drei Dinge würden Ihr Vertrauen in die Schweizer KI am stärksten erhöhen?",
+                "en": "Which three things would do most to increase your trust in Switzerland's AI?",
+                "fr": "Quelles sont les trois choses qui augmenteraient le plus votre confiance dans l'IA suisse ?",
+                "it": "Quali tre cose aumenterebbero di più la tua fiducia nell'IA svizzera?",
+                "rm": "Tge trais chaussas augmentassan il pli fitg Vossa confidenza en l'IA svizra?"
+              },
+              "maxSelect": 3,
+              "multiSelect": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it",
+                "rm"
+              ],
+              "shuffleOptions": true
+            }
+          },
+          {
+            "n": 1,
+            "id": "sf-s4",
+            "mode": "drawN",
+            "pool": [
+              {
+                "id": "sf-storage",
+                "kind": "question",
+                "header": {
+                  "de": "Wo es gespeichert wird",
+                  "en": "Where it's stored",
+                  "fr": "Où stocker",
+                  "it": "Dove vengono archiviati",
+                  "rm": "Nua ch'i vegn arcunau"
+                },
+                "options": [
+                  {
+                    "id": "sf-storage-device",
+                    "label": {
+                      "de": "Nur auf den Geräten der Nutzenden, auch wenn einige Funktionen dadurch weniger leistungsfähig werden",
+                      "en": "Only on users' own devices, even if some features become less powerful",
+                      "fr": "Uniquement sur les appareils des utilisateurs, même si certaines fonctions deviennent moins puissantes",
+                      "it": "Solo sui dispositivi degli utenti, anche se alcune funzioni diventano meno potenti",
+                      "rm": "Mo sin ils agens apparats, er sche intginas funcziuns perdan qua tras prestaziun"
+                    }
+                  },
+                  {
+                    "id": "sf-storage-swiss",
+                    "label": {
+                      "de": "In sicherer Schweizer Infrastruktur, auch wenn es dadurch langsamer oder teurer wird",
+                      "en": "In secure Swiss infrastructure, even if that makes things slower or more expensive",
+                      "fr": "Dans une infrastructure suisse sécurisée, même si cela rend les choses plus lentes ou plus chères",
+                      "it": "In un'infrastruttura svizzera sicura, anche se ciò rendesse il sistema più lento o più costoso",
+                      "rm": "En ina infrastructura svizra segira – er sche quai chaschuna retards u custs pli auts"
+                    }
+                  },
+                  {
+                    "id": "sf-storage-anywhere",
+                    "label": {
+                      "de": "Wo immer es am besten funktioniert, auch ausserhalb der Schweiz: niedrige Kosten und Schnelligkeit zuerst",
+                      "en": "Wherever works best, including outside Switzerland: cost and speed first",
+                      "fr": "Là où ça marche le mieux, y compris hors de Suisse : coût et vitesse d'abord",
+                      "it": "Dove funziona meglio, anche fuori dalla Svizzera: costi e velocità prima di tutto",
+                      "rm": "Nua ch'i funcziuna il meglier, er ordaifer la Svizra: custs e spertadad stattan en emprima lingia"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Wenn die Schweizer KI Informationen aus früheren Gesprächen speichert, wo sollen diese Informationen hinterlegt werden?",
+                  "en": "If Switzerland's AI stores information from previous conversations, where should that information be stored?",
+                  "fr": "Si l'IA suisse conserve des informations de conversations précédentes, où ces informations devraient-elles être stockées ?",
+                  "it": "Se l'IA svizzera conserva informazioni dalle conversazioni precedenti, dove dovrebbero essere archiviate?",
+                  "rm": "Sche l'IA da la Svizra memorisescha infurmaziuns da conversaziuns precedentas, nua duain questas infurmaziuns vegnir arcunadas?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              },
+              {
+                "id": "sf-reading",
+                "kind": "question",
+                "header": {
+                  "de": "Mitlesen",
+                  "en": "Reading along",
+                  "fr": "Lecture des conversations",
+                  "it": "Lettura delle conversazioni",
+                  "rm": "Leger vinavant"
+                },
+                "options": [
+                  {
+                    "id": "sf-reading-anonymised",
+                    "label": {
+                      "de": "In Ordnung, sofern mein Name und meine persönlichen Daten entfernt werden",
+                      "en": "Fine, if my name and details are removed",
+                      "fr": "D'accord, si mon nom et mes coordonnées sont retirés",
+                      "it": "Va bene, se il mio nome e i miei dati vengono rimossi",
+                      "rm": "En urden, sche mes num e mias indicaziuns vegnan stizzadas"
+                    }
+                  },
+                  {
+                    "id": "sf-reading-ask",
+                    "label": {
+                      "de": "Nur wenn ich jedes Mal vorher gefragt werde",
+                      "en": "Only if I'm asked first, each time",
+                      "fr": "Seulement si on me demande d'abord, à chaque fois",
+                      "it": "Solo se me lo chiedono prima, ogni volta",
+                      "rm": "Mo sche jau vegn dumandà ordavant, mintga giada"
+                    }
+                  },
+                  {
+                    "id": "sf-reading-never",
+                    "label": {
+                      "de": "Nie: nur Maschinen",
+                      "en": "Never: machines only",
+                      "fr": "Jamais : machines uniquement",
+                      "it": "Mai: solo macchine",
+                      "rm": "Mai: mo maschinas"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Um das System zu verbessern, könnte manchmal ein Entwickler oder eine Entwicklerin Gespräche mitlesen. Wie soll die Regel lauten?",
+                  "en": "To improve the system, a person might sometimes read conversations. What should the rule be?",
+                  "fr": "Pour améliorer le système, une personne pourrait parfois lire des conversations. Quelle devrait être la règle ?",
+                  "it": "Per migliorare il sistema, a volte una persona potrebbe leggere le conversazioni. Quale dovrebbe essere la regola?",
+                  "rm": "Per meglierar il sistem poi dar ch'insatgi legia ils discurs. Tge reglas duessan valair?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              },
+              {
+                "id": "sf-consent",
+                "kind": "question",
+                "header": {
+                  "de": "Der Preis der Einwilligung",
+                  "en": "The price of consent",
+                  "fr": "Le prix du consentement",
+                  "it": "Il prezzo del consenso",
+                  "rm": "Il pretsch dal consentiment"
+                },
+                "options": [
+                  {
+                    "id": "sf-consent-keep",
+                    "label": {
+                      "de": "Beibehalten: Einwilligung zählt mehr als eine bessere KI",
+                      "en": "Keep it: consent matters more than a better AI",
+                      "fr": "Garder cette règle : le consentement compte plus qu'une meilleure IA",
+                      "it": "Mantenere la regola: il consenso conta più di un'IA migliore",
+                      "rm": "Mantegnair: Il consentiment è pli impurtant ch'ina meglra IA"
+                    }
+                  },
+                  {
+                    "id": "sf-consent-loosen",
+                    "label": {
+                      "de": "Lockern: nutzen, was das Gesetz erlaubt, auch ohne zu fragen",
+                      "en": "Loosen it: use what the law allows, even without asking",
+                      "fr": "L'assouplir : utiliser ce que la loi permet, même sans demander",
+                      "it": "Allentarla: usare ciò che la legge permette, anche senza chiedere",
+                      "rm": "Schluccar: nizzegiar las pussaivladads legalas, er senza dumandar ordavant"
+                    }
+                  },
+                  {
+                    "id": "sf-consent-tighten",
+                    "label": {
+                      "de": "Weiter verschärfen, koste es, was es wolle",
+                      "en": "Tighten it further, whatever the cost",
+                      "fr": "La durcir encore, quel qu'en soit le prix",
+                      "it": "Renderla ancora più severa, a qualunque costo",
+                      "rm": "Mesiras pli restrictivas, independent dals custs"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Die Schweizer KI lernt aus keinem Text, dessen Autorinnen und Autoren nicht eingewilligt haben. Das Entwickler-Team hat gemessen, was das kostet: Die Leistung der KI ist dadurch ein paar Prozent schlechter. Wie soll es in der nächsten Version gehandhabt werden?",
+                  "en": "Switzerland's AI refuses to learn from any text whose authors said no. The team measured what that costs: the AI is a few percent worse because of it. What should the next version do?",
+                  "fr": "L'IA suisse refuse d'apprendre de tout texte dont les auteurs ont dit non. L'équipe a mesuré ce que cela coûte : l'IA y perd quelques pour cent de performance. Que devrait faire la prochaine version ?",
+                  "it": "L'IA svizzera si rifiuta di imparare da qualsiasi testo i cui autori abbiano negato il consenso. Il team ne ha misurato il costo: per questo le prestazioni dell'IA sono inferiori di qualche punto percentuale. Cosa dovrebbe fare la prossima versione?",
+                  "rm": "L'IA svizra refusa d'emprender da texts ch'ils auturs han gia refusà. Il team ha eruì tge custs che resultan tras quai: L'IA vegn uschia per intgins pertschient mendra. Tge duess la proxima versiun far?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              },
+              {
+                "id": "sf-governance",
+                "kind": "question",
+                "header": {
+                  "de": "Wer über die KI bestimmt",
+                  "en": "Who governs it",
+                  "fr": "Qui la gouverne",
+                  "it": "Chi la governa",
+                  "rm": "Tgi che la reglescha"
+                },
+                "options": [
+                  {
+                    "id": "sf-gov-public",
+                    "label": {
+                      "de": "Ein KI-System, das nach Schweizer Gemeinwohlprinzipien geführt wird",
+                      "en": "An AI system governed under Swiss public-interest principles",
+                      "fr": "Un système d'IA régi par des principes suisses d'intérêt public",
+                      "it": "Un sistema di IA governato secondo principi svizzeri di interesse pubblico",
+                      "rm": "In sistem d'IA suttamess als princips svizzers da l'interess public"
+                    }
+                  },
+                  {
+                    "id": "sf-gov-private",
+                    "label": {
+                      "de": "Ein KI-System, das hauptsächlich von globalen Privatunternehmen geführt wird",
+                      "en": "An AI system governed primarily by global private companies",
+                      "fr": "Un système d'IA régi principalement par des entreprises privées mondiales",
+                      "it": "Un sistema di IA governato principalmente da aziende private globali",
+                      "rm": "In sistem dad IA che vegn dirigì en emprima lingia d'interpresas privatas globalas"
+                    }
+                  },
+                  {
+                    "id": "sf-gov-none",
+                    "label": {
+                      "de": "Keine echte Präferenz",
+                      "en": "No real preference",
+                      "fr": "Pas de vraie préférence",
+                      "it": "Nessuna vera preferenza",
+                      "rm": "Nagina preferenza speziala"
+                    },
+                    "exclusive": true
+                  }
+                ],
+                "question": {
+                  "de": "Wenn zwei KI-Systeme ähnliche Fähigkeiten hätten, welches System würden Sie bevorzugen?",
+                  "en": "If two AI systems offered similar capabilities, which would you prefer?",
+                  "fr": "Si deux systèmes d'IA offraient des capacités similaires, lequel préféreriez-vous ?",
+                  "it": "Se due sistemi di IA offrissero capacità simili, quale preferiresti?",
+                  "rm": "Sche dus sistems d'IA purschessan capacitads sumegliantas, tgenin preferissas Vus?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              },
+              {
+                "id": "sf-prefer-domains-v2",
+                "kind": "question",
+                "header": {
+                  "de": "Schweizer KI für",
+                  "en": "Prefer Swiss for",
+                  "fr": "IA suisse pour",
+                  "it": "Quando preferire l'IA svizzera",
+                  "rm": "Preferir svizzer per"
+                },
+                "options": [
+                  {
+                    "id": "sf-prefer-everyday",
+                    "label": {
+                      "de": "Alltagsfragen und allgemeine Informationen",
+                      "en": "Everyday questions and general information",
+                      "fr": "Questions du quotidien et informations générales",
+                      "it": "Domande quotidiane e informazioni generali",
+                      "rm": "Dumondas dal mintgadi ed infurmaziuns generalas"
+                    }
+                  },
+                  {
+                    "id": "sf-prefer-work-sensitive",
+                    "label": {
+                      "de": "Arbeitsaufgaben mit sensiblen Daten",
+                      "en": "Work tasks involving sensitive data",
+                      "fr": "Tâches professionnelles impliquant des données sensibles",
+                      "it": "Compiti di lavoro con dati sensibili",
+                      "rm": "Incumbensas da lavur cun datas sensiblas"
+                    }
+                  },
+                  {
+                    "id": "sf-prefer-sensitive-topics",
+                    "label": {
+                      "de": "Sensible Themen wie Gesundheit, Recht oder Finanzen",
+                      "en": "Sensitive topics such as health, legal, or financial matters",
+                      "fr": "Sujets sensibles comme la santé, le droit ou les finances",
+                      "it": "Temi sensibili come salute, questioni legali o finanziarie",
+                      "rm": "Temas sensibels sco sanadad, dretg u finanzas"
+                    }
+                  },
+                  {
+                    "id": "sf-prefer-gov",
+                    "label": {
+                      "de": "Offizielle Behördengänge",
+                      "en": "Official government processes",
+                      "fr": "Démarches administratives officielles",
+                      "it": "Procedure amministrative ufficiali",
+                      "rm": "Process guvernativs uffizials"
+                    }
+                  },
+                  {
+                    "id": "sf-prefer-personal",
+                    "label": {
+                      "de": "Persönliche oder emotionale Themen",
+                      "en": "Personal or emotional topics",
+                      "fr": "Sujets personnels ou émotionnels",
+                      "it": "Temi personali o emotivi",
+                      "rm": "Temas persunals u emoziunals"
+                    }
+                  },
+                  {
+                    "id": "sf-prefer-none",
+                    "label": {
+                      "de": "Nichts davon",
+                      "en": "None of the above",
+                      "fr": "Aucun de ces domaines",
+                      "it": "Nessuno di questi",
+                      "rm": "Nagin dals surmenziunads"
+                    },
+                    "exclusive": true
+                  }
+                ],
+                "question": {
+                  "de": "Wo würden Sie die schweizerische KI gezielt internationaler KI vorziehen? Wählen Sie bis zu drei.",
+                  "en": "Where would you specifically prefer Switzerland's AI over foreign AI? Pick up to three.",
+                  "fr": "Où préféreriez-vous spécifiquement l'IA suisse à une IA étrangère ? Choisissez-en jusqu'à trois.",
+                  "it": "Dove preferiresti specificamente l'IA svizzera a un'IA straniera? Scegli fino a tre.",
+                  "rm": "Nua preferissas Vus explicitamain l'IA svizra ad ina IA estra? Tscherni fin trais."
+                },
+                "maxSelect": 3,
+                "multiSelect": true,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it",
+                  "rm"
+                ],
+                "shuffleOptions": true
+              }
+            ]
+          }
+        ]
+      },
+      "rationale": "Your answers shape who holds your data, who governs Switzerland's AI, and what it would take for you to trust it over a foreign one."
+    },
+    {
+      "key": "languages-culture",
+      "plan": "### Languages & culture\n- Open this theme by calling open_topic with key \"languages-culture\". The opener cards are built for you — do not write your own.\n- This theme covers how the AI should adapt to Switzerland's linguistic diversity and local contexts: which communities and languages matter most, whether it should be one Switzerland or region-aware, what makes it feel genuinely Swiss (knowledge vs values), and how it handles canton-by-canton differences.",
+      "blurb": "",
+      "title": "Languages & culture",
+      "actorId": "topic-languages-culture-v1",
+      "openers": {
+        "sequence": [
+          {
+            "id": "lc-community-step",
+            "mode": "always",
+            "opener": {
+              "id": "lc-community",
+              "kind": "question",
+              "header": {
+                "de": "Zugehörigkeit",
+                "en": "Belonging",
+                "fr": "Appartenance",
+                "it": "Appartenenza",
+                "rm": "Appartegnientscha"
+              },
+              "options": [
+                {
+                  "id": "lc-community-local",
+                  "label": {
+                    "de": "Meine Stadt, mein Dorf oder mein Tal",
+                    "en": "My city, village, or valley",
+                    "fr": "Ma ville, mon village ou ma vallée",
+                    "it": "La mia città, il mio villaggio o la mia valle",
+                    "rm": "Mia citad, mes vitg u mia val"
+                  }
+                },
+                {
+                  "id": "lc-community-canton",
+                  "label": {
+                    "de": "Mein Kanton",
+                    "en": "My canton",
+                    "fr": "Mon canton",
+                    "it": "Il mio cantone",
+                    "rm": "Mes chantun"
+                  }
+                },
+                {
+                  "id": "lc-community-language",
+                  "label": {
+                    "de": "Meine Sprachregion",
+                    "en": "My language region",
+                    "fr": "Ma région linguistique",
+                    "it": "La mia regione linguistica",
+                    "rm": "Mia regiun linguistica"
+                  }
+                },
+                {
+                  "id": "lc-community-switzerland",
+                  "label": {
+                    "de": "Die Schweiz als Ganzes",
+                    "en": "Switzerland as a whole",
+                    "fr": "La Suisse dans son ensemble",
+                    "it": "La Svizzera nel suo insieme",
+                    "rm": "L'entira Svizra"
+                  }
+                },
+                {
+                  "id": "lc-community-europe",
+                  "label": {
+                    "de": "Europa",
+                    "en": "Europe",
+                    "fr": "L'Europe",
+                    "it": "L'Europa",
+                    "rm": "Europa"
+                  }
+                },
+                {
+                  "id": "lc-community-international",
+                  "label": {
+                    "de": "International",
+                    "en": "International",
+                    "fr": "International",
+                    "it": "La comunità internazionale",
+                    "rm": "Internaziunal"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Mit welcher Gemeinschaft fühlen Sie sich am meisten verbunden?",
+                "en": "Which community do you feel most connected to?",
+                "fr": "De quelle communauté vous sentez-vous le plus proche ?",
+                "it": "A quale comunità ti senti più legato?",
+                "rm": "Cun tge cuminanza As sentis Vus il pli collià?"
+              },
+              "multiSelect": false,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ]
+            }
+          },
+          {
+            "id": "lc-languages-step",
+            "mode": "always",
+            "opener": {
+              "id": "lc-languages",
+              "kind": "question",
+              "header": {
+                "de": "Sprachen",
+                "en": "Languages",
+                "fr": "Langues",
+                "it": "Lingue",
+                "rm": "Linguas"
+              },
+              "options": [
+                {
+                  "id": "lc-lang-swiss-german",
+                  "label": {
+                    "de": "Schweizerdeutsch",
+                    "en": "Swiss German",
+                    "fr": "Suisse allemand",
+                    "it": "Svizzero tedesco",
+                    "rm": "Tudestg svizzer"
+                  }
+                },
+                {
+                  "id": "lc-lang-german",
+                  "label": {
+                    "de": "Deutsch",
+                    "en": "German",
+                    "fr": "Allemand",
+                    "it": "Tedesco",
+                    "rm": "Tudestg"
+                  }
+                },
+                {
+                  "id": "lc-lang-french",
+                  "label": {
+                    "de": "Französisch",
+                    "en": "French",
+                    "fr": "Français",
+                    "it": "Francese",
+                    "rm": "Franzos"
+                  }
+                },
+                {
+                  "id": "lc-lang-italian",
+                  "label": {
+                    "de": "Italienisch",
+                    "en": "Italian",
+                    "fr": "Italien",
+                    "it": "Italiano",
+                    "rm": "Talian"
+                  }
+                },
+                {
+                  "id": "lc-lang-romansh",
+                  "label": {
+                    "de": "Rätoromanisch",
+                    "en": "Romansh",
+                    "fr": "Romanche",
+                    "it": "Romancio",
+                    "rm": "Rumantsch"
+                  }
+                },
+                {
+                  "id": "lc-lang-english",
+                  "label": {
+                    "de": "Englisch",
+                    "en": "English",
+                    "fr": "Anglais",
+                    "it": "Inglese",
+                    "rm": "Englais"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Welche drei Sprachfähigkeiten sind für die Schweizer KI am wichtigsten?",
+                "en": "Which three language capabilities are most important for Switzerland's AI?",
+                "fr": "Quelles sont les trois capacités linguistiques les plus importantes pour l'IA suisse ?",
+                "it": "Quali tre capacità linguistiche sono più importanti per l'IA svizzera?",
+                "rm": "Tge capacitads linguisticas èn las pli impurtantas per l'IA da la Svizra?"
+              },
+              "maxSelect": 3,
+              "multiSelect": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ]
+            }
+          },
+          {
+            "id": "lc-knowledge-values-step",
+            "mode": "always",
+            "opener": {
+              "id": "lc-knowledge-values",
+              "kind": "binary",
+              "optionA": {
+                "id": "lc-kv-knowledge",
+                "label": {
+                  "de": "Schweizer Kontextwissen: eine KI, die Institutionen, Dienste, Gesetze und lokale Informationen der Schweiz besser kennt",
+                  "en": "Swiss context knowledge: an AI that has better knowledge of Switzerland's institutions, services, laws, and local information",
+                  "fr": "Connaissance du contexte suisse : une IA qui connaît mieux les institutions, services, lois et informations locales de la Suisse",
+                  "it": "Conoscenza del contesto svizzero: un'IA che conosce meglio istituzioni, servizi, leggi e informazioni locali della Svizzera",
+                  "rm": "Enconuschientschas dal context svizzer: Ina IA che posseda enconuschientschas pli fundadas da las instituziuns, dals servetschs, da las leschas e da las infurmaziuns localas da la Svizra"
+                }
+              },
+              "optionB": {
+                "id": "lc-kv-values",
+                "label": {
+                  "de": "Schweizer Werte: eine KI, die oft mit der Schweiz verbundene Werte verkörpert, etwa Neutralität, Transparenz, Mehrsprachigkeit und demokratische Rechenschaft",
+                  "en": "Swiss values: an AI that reflects values often associated with Switzerland, such as neutrality, transparency, multilingualism, and democratic accountability",
+                  "fr": "Valeurs suisses : une IA qui reflète des valeurs souvent associées à la Suisse, comme la neutralité, la transparence, le multilinguisme et la responsabilité démocratique",
+                  "it": "Valori svizzeri: un'IA che riflette valori spesso associati alla Svizzera, come neutralità, trasparenza, multilinguismo e responsabilità democratica",
+                  "rm": "Valurs svizras: Ina IA che reflectescha valurs che vegnan associadas savens cun la Svizra, sco la neutralitad, la transparenza, la plurilinguitad e la responsabladad democratica"
+                }
+              },
+              "question": {
+                "de": "Was würde eine KI für Sie echt schweizerisch machen?",
+                "en": "What would make an AI feel genuinely Swiss to you?",
+                "fr": "Qu'est-ce qui rendrait une IA authentiquement suisse à vos yeux ?",
+                "it": "Cosa farebbe sembrare un'IA autenticamente svizzera ai tuoi occhi?",
+                "rm": "Tge faschess ina IA propi svizra per Vus?"
+              },
+              "draftLocales": [
+                "de",
+                "fr",
+                "it",
+                "rm"
+              ]
+            }
+          },
+          {
+            "n": 1,
+            "id": "lc-s4",
+            "mode": "drawN",
+            "pool": [
+              {
+                "id": "lc-adapt",
+                "kind": "question",
+                "header": {
+                  "de": "Lokaler Kontext",
+                  "en": "Local context",
+                  "fr": "Contexte local",
+                  "it": "Contesto locale",
+                  "rm": "Context local"
+                },
+                "options": [
+                  {
+                    "id": "lc-adapt-language",
+                    "label": {
+                      "de": "Die Sprache, die ich spreche",
+                      "en": "The language I speak",
+                      "fr": "La langue que je parle",
+                      "it": "La lingua che parlo",
+                      "rm": "La lingua che jau discur"
+                    }
+                  },
+                  {
+                    "id": "lc-adapt-place",
+                    "label": {
+                      "de": "Den Ort, an dem ich lebe",
+                      "en": "The place where I live",
+                      "fr": "L'endroit où je vis",
+                      "it": "Il luogo in cui vivo",
+                      "rm": "Il lieu nua che jau viv"
+                    }
+                  },
+                  {
+                    "id": "lc-adapt-institutions",
+                    "label": {
+                      "de": "Lokale Institutionen und Dienste",
+                      "en": "Local institutions and services",
+                      "fr": "Les institutions et services locaux",
+                      "it": "Le istituzioni e i servizi locali",
+                      "rm": "Instituziuns e servetschs locals"
+                    }
+                  },
+                  {
+                    "id": "lc-adapt-culture",
+                    "label": {
+                      "de": "Kulturelle Normen und Traditionen",
+                      "en": "Cultural norms and traditions",
+                      "fr": "Les normes et traditions culturelles",
+                      "it": "Le norme e le tradizioni culturali",
+                      "rm": "Normas e tradiziuns culturalas"
+                    }
+                  },
+                  {
+                    "id": "lc-adapt-profession",
+                    "label": {
+                      "de": "Meinen Beruf oder Arbeitsbereich",
+                      "en": "My profession or field of work",
+                      "fr": "Ma profession ou mon domaine d'activité",
+                      "it": "La mia professione o il mio settore",
+                      "rm": "Mia professiun u mes sectur da lavur"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Angenommen, die Schweizer KI könnte sich an einen Aspekt Ihres lokalen Kontexts anpassen. Was soll sie am ehesten besser verstehen?",
+                  "en": "Suppose Switzerland's AI could adapt to one aspect of your local context. What would you most want it to understand better?",
+                  "fr": "Supposons que l'IA suisse puisse s'adapter à un aspect de votre contexte local. Que voudriez-vous surtout qu'elle comprenne mieux ?",
+                  "it": "Supponiamo che l'IA svizzera possa tenere maggiormente conto di un aspetto del tuo contesto locale. Quale vorresti che comprendesse meglio?",
+                  "rm": "Supponì che l'IA da la Svizra pudess s'adattar ad in aspect da Voss context local. Tge giavischassas Vus il pli fitg ch'ella chapeschia meglier?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ],
+                "shuffleOptions": true
+              },
+              {
+                "id": "lc-region",
+                "kind": "slider",
+                "maxLabel": {
+                  "de": "Eine Schweiz: die gleichen Antworten für alle",
+                  "en": "One Switzerland: the same answers for everyone",
+                  "fr": "Une seule Suisse : les mêmes réponses pour tout le monde",
+                  "it": "Una sola Svizzera: le stesse risposte per tutti",
+                  "rm": "Ina Svizra: per tuts las medemas respostas"
+                },
+                "minLabel": {
+                  "de": "Passt sich meiner Region an: Antworten spiegeln meinen Wohnort",
+                  "en": "Adapts to my region: answers reflect where I live",
+                  "fr": "S'adapte à ma région : les réponses reflètent où je vis",
+                  "it": "Si adatta alla mia regione: le risposte riflettono dove vivo",
+                  "rm": "S'adattar a mia regiun: las respostas reflecteschan mes lieu da domicil"
+                },
+                "question": {
+                  "de": "Die Schweizer KI wird sehr unterschiedlichen Gemeinschaften dienen. Wie soll sie dieser Vielfalt gerecht werden?",
+                  "en": "Switzerland's AI will serve very different communities. How should it handle that?",
+                  "fr": "L'IA suisse servira des communautés très différentes. Comment doit-elle gérer cela ?",
+                  "it": "L'IA svizzera servirà comunità molto diverse. Come dovrebbe gestirlo?",
+                  "rm": "L'IA svizra vegn a sustegnair fitg differentas gruppas da la populaziun. Co duess ella ir enturn cun quai?"
+                },
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it",
+                  "rm"
+                ]
+              },
+              {
+                "id": "lc-canton",
+                "kind": "question",
+                "header": {
+                  "de": "Kantonale Unterschiede",
+                  "en": "Canton differences",
+                  "fr": "Différences cantonales",
+                  "it": "Differenze cantonali",
+                  "rm": "Differenzas tranter chantuns"
+                },
+                "options": [
+                  {
+                    "id": "lc-canton-default",
+                    "label": {
+                      "de": "Für meinen Kanton antworten und wenn nötig nachfragen, welcher es ist",
+                      "en": "Answer for my canton, asking which one if needed",
+                      "fr": "Répondre pour mon canton, en demandant lequel si nécessaire",
+                      "it": "Rispondere per il mio cantone, chiedendo quale se necessario",
+                      "rm": "Suandar per standard la pratica da realisaziun da mes chantun"
+                    }
+                  },
+                  {
+                    "id": "lc-canton-baseline",
+                    "label": {
+                      "de": "Den nationalen Grundstandard nennen und darauf hinweisen, dass die Umsetzung lokal variiert",
+                      "en": "Give the national baseline and note that implementation varies locally",
+                      "fr": "Donner la règle nationale de base et signaler que l'application varie localement",
+                      "it": "Fornire il quadro nazionale di riferimento e segnalare che l'applicazione varia a livello locale",
+                      "rm": "Numnar la basa naziunala e far attent che la realisaziun saja localmain differenta"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Bundesrecht wird oft von Kanton zu Kanton unterschiedlich umgesetzt. Wenn die KI Ihnen Informationen gibt, die je nach Kanton variieren können (zum Beispiel Schulwesen, Zugang zur Gesundheitsversorgung), soll sie:",
+                  "en": "Federal law is often implemented differently from canton to canton. If the AI gives you information that could vary by canton (for example school policies, healthcare access), it should:",
+                  "fr": "Le droit fédéral est souvent appliqué différemment d'un canton à l'autre. Si l'IA vous donne une information qui peut varier selon le canton (par exemple les règles scolaires, l'accès aux soins), elle devrait :",
+                  "it": "Il diritto federale è spesso applicato in modo diverso da cantone a cantone. Se l'IA ti fornisce informazioni che possono variare a seconda del cantone (per esempio le politiche scolastiche o l'accesso alle cure), dovrebbe:",
+                  "rm": "Leschas federalas vegnan savens realisadas differentamain da chantun a chantun. Sche l'IA As metta a disposiziun infurmaziuns che pon variar tut tenor chantun (p.ex. directivas da scola, access al provediment da sanadad), duess ella:"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rationale": "Your answers shape how Switzerland's AI adapts to its four languages and to the local contexts people actually live in."
+    },
+    {
+      "key": "investing",
+      "plan": "### Investing in AI\n- Open this theme by calling open_topic with key \"investing\". The opener cards are built for you — do not write your own.\n- This theme covers how Switzerland should invest in AI: what would make the investment feel worth it by 2031, the role it should play in AI governance, public vs private funding, and the terms if private money helps pay for it.",
+      "blurb": "",
+      "title": "Investing in AI",
+      "actorId": "topic-investing-v1",
+      "openers": {
+        "sequence": [
+          {
+            "id": "in-worth-it-step",
+            "mode": "always",
+            "opener": {
+              "id": "in-worth-it",
+              "kind": "question",
+              "header": {
+                "de": "Hat es sich gelohnt",
+                "en": "Worth it",
+                "fr": "Ça en valait la peine",
+                "it": "Ne è valsa la pena",
+                "rm": "Vala la paina"
+              },
+              "options": [
+                {
+                  "id": "in-worth-services",
+                  "label": {
+                    "de": "Öffentliche Dienste, die für alle besser funktionieren",
+                    "en": "Public services that work better for everyone",
+                    "fr": "Des services publics qui fonctionnent mieux pour tout le monde",
+                    "it": "Servizi pubblici che funzionano meglio per tutti",
+                    "rm": "Servetschs publics che funcziunan meglier per tuts: ospitals, scolas ed autoritads ch'èn considerablamain pli simplas d'utilisar – independentamain da la dumonda, nua ch'ins abitescha u tge lingua ch'ins discurra"
+                  }
+                },
+                {
+                  "id": "in-worth-economy",
+                  "label": {
+                    "de": "Eine stärkere Schweizer Wirtschaft",
+                    "en": "A stronger Swiss economy",
+                    "fr": "Une économie suisse plus forte",
+                    "it": "Un'economia svizzera più forte",
+                    "rm": "In'economia svizra pli ferma: Interpresas localas, start-ups e perscrutaders survegnan ils meds per concurrer sin il pli aut nivel, uschia che talents ed innovaziuns vegnan tegnids en Svizra"
+                  }
+                },
+                {
+                  "id": "in-worth-standard",
+                  "label": {
+                    "de": "Ein globaler Standard für verantwortungsvolle KI",
+                    "en": "A global standard for responsible AI",
+                    "fr": "Une référence mondiale pour une IA responsable",
+                    "it": "Un modello globale per un'IA responsabile",
+                    "rm": "In standard global per l'IA responsabla: La Svizra vegn renconuschida internaziunalmain perquai ch'ella realisescha correctamain la direcziun da l'IA – en moda transparenta, responsabla e fidabla"
+                  }
+                },
+                {
+                  "id": "in-worth-languages",
+                  "label": {
+                    "de": "KI, die in allen vier Landessprachen voll funktioniert",
+                    "en": "AI that works fully in all four national languages",
+                    "fr": "Une IA pleinement fonctionnelle dans les quatre langues nationales",
+                    "it": "Un'IA che funziona pienamente in tutte e quattro le lingue nazionali",
+                    "rm": "Ina IA che funcziuna en tut las quatter linguas uffizialas: persunas da lingua tudestga, franzosa, taliana e rumantscha pon nizzegiar l'IA en cumplaina dimensiun senza ch'ina gruppa linguistica vegnia laschada enavos"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Es ist 2031. Die Schweiz hat in den letzten fünf Jahren erheblich in KI investiert. Woran würden Sie merken, dass es sich gelohnt hat?",
+                "en": "It is 2031. Switzerland made significant investments in AI over the past five years. What would make you feel it was worth it?",
+                "fr": "Nous sommes en 2031. La Suisse a beaucoup investi dans l'IA ces cinq dernières années. Qu'est-ce qui vous donnerait le sentiment que ça en valait la peine ?",
+                "it": "È il 2031. Negli ultimi cinque anni la Svizzera ha investito molto nell'IA. Cosa ti convincerebbe che ne è valsa la pena?",
+                "rm": "Nus scrivain l'onn 2031. La Svizra ha fatg ils ultims tschintg onns investiziuns considerablas en l'IA. Tge dess a Vus il sentiment che quai haja valì la paina?"
+              },
+              "multiSelect": false,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ],
+              "shuffleOptions": true
+            }
+          },
+          {
+            "id": "in-gov-role-step",
+            "mode": "always",
+            "opener": {
+              "id": "in-gov-role",
+              "kind": "question",
+              "header": {
+                "de": "Rolle der Schweiz",
+                "en": "Switzerland's role",
+                "fr": "Le rôle de la Suisse",
+                "it": "Il ruolo della Svizzera",
+                "rm": "La rolla da la Svizra"
+              },
+              "options": [
+                {
+                  "id": "in-gov-lead",
+                  "label": {
+                    "de": "Führen: eigene Standards setzen und international dafür eintreten",
+                    "en": "Lead: set its own standards and advocate for them internationally",
+                    "fr": "Mener : fixer ses propres normes et les défendre à l'international",
+                    "it": "Guidare: fissare i propri standard e sostenerli a livello internazionale",
+                    "rm": "Manar: metter agens standards e s'engaschar internaziunalmain per quels"
+                  }
+                },
+                {
+                  "id": "in-gov-align",
+                  "label": {
+                    "de": "Angleichen: den EU-Rahmen übernehmen, für Kompatibilität und Marktzugang",
+                    "en": "Align: adopt the EU framework, for compatibility and market access",
+                    "fr": "S'aligner : adopter le cadre de l'UE, pour la compatibilité et l'accès au marché",
+                    "it": "Allinearsi: adottare il quadro dell'UE, per compatibilità e accesso al mercato",
+                    "rm": "S'orientar: surpigliar il rom da l'UE per garantir la cumpatibilitad e l'access al martgà"
+                  }
+                },
+                {
+                  "id": "in-gov-collaborate",
+                  "label": {
+                    "de": "Zusammenarbeiten: gemeinsame Regeln mit anderen Ländern entwickeln",
+                    "en": "Collaborate: develop shared rules with other countries",
+                    "fr": "Collaborer : élaborer des règles communes avec d'autres pays",
+                    "it": "Collaborare: sviluppare regole comuni con altri paesi",
+                    "rm": "Collavurar: sviluppar reglas cuminaivlas cun auters pajais"
+                  }
+                },
+                {
+                  "id": "in-gov-light",
+                  "label": {
+                    "de": "Zurückhalten: die Branche weitgehend selbst regulieren lassen, um Innovation nicht zu bremsen",
+                    "en": "Light touch: let industry largely self-regulate, to avoid slowing innovation",
+                    "fr": "Intervention légère : laisser l'industrie s'autoréguler en grande partie, pour ne pas freiner l'innovation",
+                    "it": "Intervento minimo: lasciare che il settore si autoregoli in gran parte, per non frenare l'innovazione",
+                    "rm": "Regulaziun reservada: L'industria duai per gronda part sa regular sezza per evitar in retardament da l'innovaziun"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Welche Rolle soll die Schweiz bei der Governance von KI spielen?",
+                "en": "What role should Switzerland play in how AI is governed?",
+                "fr": "Quel rôle la Suisse devrait-elle jouer dans la gouvernance de l'IA ?",
+                "it": "Quale ruolo dovrebbe avere la Svizzera nella governance dell'IA?",
+                "rm": "Tge rolla duess la Svizra giugar tar la regulaziun da l'IA?"
+              },
+              "multiSelect": false,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ]
+            }
+          },
+          {
+            "id": "in-funding-slider-step",
+            "mode": "always",
+            "opener": {
+              "id": "in-funding-slider",
+              "kind": "slider",
+              "maxLabel": {
+                "de": "Privat: weniger öffentliches Mitspracherecht, kommerzielle Prioritäten bestimmen die Richtung",
+                "en": "Private: less public say, commercial priorities shape direction",
+                "fr": "Privé : le public a moins son mot à dire, les priorités commerciales orientent le développement",
+                "it": "Privato: meno voce in capitolo per il pubblico; le priorità commerciali determinano la direzione",
+                "rm": "Privat: la publicitad ha main da dir, prioritads commerzialas furman la direcziun"
+              },
+              "minLabel": {
+                "de": "Öffentlich: steuerfinanziert, möglicherweise langsamer",
+                "en": "Public: paid by taxes, possibly slower",
+                "fr": "Public : payé par les impôts, peut-être plus lent",
+                "it": "Pubblico: finanziato dalle imposte, forse più lento",
+                "rm": "Public: finanzià cun daners da taglia, eventualmain pli plaun"
+              },
+              "question": {
+                "de": "Wer soll die Entwicklung der Schweizer KI in erster Linie finanzieren und vorantreiben?",
+                "en": "Who should primarily fund and drive the development of Swiss AI?",
+                "fr": "Qui devrait principalement financer et piloter le développement de l'IA suisse ?",
+                "it": "Chi dovrebbe principalmente finanziare e guidare lo sviluppo dell'IA svizzera?",
+                "rm": "Tgi duai principalmain finanziar e promover il svilup da l'IA svizra?"
+              },
+              "draftLocales": [
+                "de",
+                "fr",
+                "it",
+                "rm"
+              ]
+            }
+          },
+          {
+            "id": "in-private-terms-step",
+            "mode": "always",
+            "opener": {
+              "id": "in-private-terms",
+              "kind": "question",
+              "header": {
+                "de": "Rahmenbedingungen für die Privatwirtschaft",
+                "en": "Private terms",
+                "fr": "Conditions pour le privé",
+                "it": "Condizioni per i privati",
+                "rm": "Cundiziuns privatas"
+              },
+              "options": [
+                {
+                  "id": "in-private-public-control",
+                  "label": {
+                    "de": "Sie finanzieren sie, aber alle Entscheidungen über das Verhalten der KI bleiben bei öffentlichen Institutionen",
+                    "en": "They fund it, but public institutions keep all decisions about how it behaves",
+                    "fr": "Elles la financent, mais les institutions publiques gardent la main sur toutes les décisions concernant son comportement",
+                    "it": "La finanziano, ma tutte le decisioni sul suo comportamento restano alle istituzioni pubbliche",
+                    "rm": "Ellas finanzieschan ella, ma las instituziuns publicas mantegnan la pussanza da decider co ch'ella funcziuna."
+                  }
+                },
+                {
+                  "id": "in-private-early-access",
+                  "label": {
+                    "de": "Sie dürfen frühen oder besonderen Zugang erhalten, aber keinen Einfluss auf die Regeln",
+                    "en": "They may get early or special access, but no influence on the rules",
+                    "fr": "Elles peuvent avoir un accès anticipé ou spécial, mais aucune influence sur les règles",
+                    "it": "Possono avere un accesso anticipato o speciale, ma nessuna influenza sulle regole",
+                    "rm": "Ellas survegnan eventualmain in access anticipà u spezial, n'han dentant nagina influenza sin las reglas."
+                  }
+                },
+                {
+                  "id": "in-private-priorities",
+                  "label": {
+                    "de": "Sie dürfen bei den Forschungsprioritäten mitwirken, solange ihre Rolle offengelegt wird",
+                    "en": "They may help set research priorities, as long as their role is openly disclosed",
+                    "fr": "Elles peuvent aider à définir les priorités de recherche, tant que leur rôle est divulgué ouvertement",
+                    "it": "Possono contribuire a definire le priorità di ricerca, purché il loro ruolo sia dichiarato apertamente",
+                    "rm": "Ellas pon gidar a fixar prioritads da perscrutaziun, premess che lur rolla vegnia communitgada avertamain"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Wenn private Unternehmen die Schweizer KI mitfinanzieren würden, was wäre am wichtigsten?",
+                "en": "If private companies were to help fund Switzerland's AI, what would matter most?",
+                "fr": "Si des entreprises privées devaient contribuer au financement de l'IA suisse, qu'est-ce qui compterait le plus ?",
+                "it": "Se aziende private contribuissero a finanziare l'IA svizzera, cosa conterebbe di più?",
+                "rm": "Sche interpresas privatas gidan a finanziar l'IA da la Svizra, tge è lura il pli impurtant?"
+              },
+              "multiSelect": false,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ],
+              "shuffleOptions": true
+            }
+          }
+        ]
+      },
+      "rationale": "Your answers shape how Switzerland invests in AI — public vs private, broad access vs frontier capability, and what would make it worth it."
+    },
+    {
+      "key": "accountability",
+      "plan": "### When it goes wrong\n- Open this theme by calling open_topic with key \"accountability\". The opener cards are built for you — do not write your own.\n- This theme covers who controls AI, who answers for it, and what happens next: who should have the final say on the rules, who is responsible for harm, AI in consequential decisions (the loan), disclosure when a public office used AI, what redress matters, and what we haven't covered that matters to them.\n- Keep it concrete: ground \"harm\" and \"responsibility\" in everyday examples (a wrong medical answer, a biased decision, a scam) rather than abstract policy.",
+      "blurb": "",
+      "title": "When it goes wrong",
+      "actorId": "topic-accountability-v1",
+      "openers": {
+        "sequence": [
+          {
+            "id": "ac-final-say-step",
+            "mode": "always",
+            "opener": {
+              "id": "ac-final-say",
+              "kind": "question",
+              "header": {
+                "de": "Das letzte Wort",
+                "en": "The final say",
+                "fr": "Le dernier mot",
+                "it": "L'ultima parola",
+                "rm": "L'ultim pled"
+              },
+              "options": [
+                {
+                  "id": "ac-final-citizens",
+                  "label": {
+                    "de": "Bürgerinnen und Bürger sowie Interessengruppen: öffentliche Präferenzen bestimmen die Regeln durch fortlaufende Konsultation, auch wenn Entscheide länger dauern",
+                    "en": "Citizens and stakeholders: public preferences guide the rules through ongoing consultation, even if decisions take longer",
+                    "fr": "Les citoyens et parties prenantes : les préférences du public guident les règles par une consultation continue, même si les décisions prennent plus de temps",
+                    "it": "Cittadini e parti interessate: le preferenze del pubblico guidano le regole tramite una consultazione continua, anche se le decisioni richiedono più tempo",
+                    "rm": "Burgais e gruppas d'interess: Las preferenzas da la publicitad determineschan en il rom da consultaziuns currentas las reglas, er sche las decisiuns duran uschia pli ditg"
+                  }
+                },
+                {
+                  "id": "ac-final-institutions",
+                  "label": {
+                    "de": "Verantwortliche Institutionen: Regierung und Fachgremien entscheiden effizient und werden danach durch Transparenz und Aufsicht zur Rechenschaft gezogen",
+                    "en": "Responsible institutions: government and expert bodies decide efficiently and are held accountable afterward, through transparency and oversight",
+                    "fr": "Des institutions responsables : le gouvernement et des organes d'experts décident efficacement et rendent des comptes ensuite, par la transparence et le contrôle",
+                    "it": "Istituzioni responsabili: governo e organi di esperti decidono in modo efficiente e ne rispondono dopo, tramite trasparenza e controllo",
+                    "rm": "Instituziuns responsablas: La regenza e gremis spezialisads prendan decisiuns effizientas e vegnan silsuenter fatgs responsabels tras transparenza e controlla"
+                  }
+                },
+                {
+                  "id": "ac-final-researchers",
+                  "label": {
+                    "de": "Die Forschenden, die die KI bauen: Sie kennen das System am besten und verantworten, was es tut",
+                    "en": "The researchers who build it: they know the system best and answer for what it does",
+                    "fr": "Les chercheurs qui la construisent : ils connaissent le mieux le système et répondent de ce qu'il fait",
+                    "it": "I ricercatori che la costruiscono: conoscono meglio il sistema e rispondono di ciò che fa",
+                    "rm": "Ils perscrutaders che sviluppeschan ella: Els enconuschan il meglier il sistem e portan la responsabladad per il funcziunament da quel."
+                  }
+                },
+                {
+                  "id": "ac-final-council",
+                  "label": {
+                    "de": "Ein Rat aus Bürgerinnen und Bürgern, Fachleuten und Behörden: ein ständiges Gremium, das die Verantwortung unter allen oben Genannten teilt.",
+                    "en": "A council of citizens, experts and officials: a standing body that shares the responsibility between all of the above.",
+                    "fr": "Un conseil de citoyens, d'experts et d'autorités : un organe permanent qui partage la responsabilité entre tous les acteurs ci-dessus.",
+                    "it": "Un consiglio di cittadini, esperti e autorità: un organo permanente che ripartisce la responsabilità tra tutti i soggetti sopra indicati.",
+                    "rm": "In cussegl da burgais, d'experts e da funcziunaris: in gremi permanent, en il qual la responsabladad è repartida sin tut las gruppas numnadas."
+                  }
+                }
+              ],
+              "question": {
+                "de": "Die Ergebnisse dieser Umfrage fliessen direkt in die Weiterentwicklung der KI-Regeln ein. Wer soll künftig das letzte Wort über diese Regeln haben?",
+                "en": "This survey feeds the next version of the AI's rules. Going forward, who should have the final say on those rules?",
+                "fr": "Cette enquête alimente la prochaine version des règles de l'IA. À l'avenir, qui devrait avoir le dernier mot sur ces règles ?",
+                "it": "Questo sondaggio contribuisce a definire la prossima versione delle regole dell'IA. In futuro, chi dovrebbe avere l'ultima parola su tali regole?",
+                "rm": "Ils resultats da questa retschertga van en la proxima versiun da las reglas da l'IA. Tgi duess en l'avegnir avair l'ultim pled tar questas reglas?"
+              },
+              "multiSelect": false,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it",
+                "rm"
+              ],
+              "shuffleOptions": true
+            }
+          },
+          {
+            "id": "ac-redress-step",
+            "mode": "always",
+            "opener": {
+              "id": "ac-redress",
+              "kind": "question",
+              "header": {
+                "de": "Wenn es schiefgeht",
+                "en": "When it goes wrong",
+                "fr": "Quand ça tourne mal",
+                "it": "Quando qualcosa va storto",
+                "rm": "Sch'insatge va fallà"
+              },
+              "options": [
+                {
+                  "id": "ac-redress-report",
+                  "label": {
+                    "de": "Sofortmeldung: direkt im Chat melden und eine persönliche Rückmeldung erhalten",
+                    "en": "Instant Reporting: submitting a chat ticket and receiving a direct followup",
+                    "fr": "Signalement immédiat : envoyer un ticket dans le chat et recevoir un suivi direct",
+                    "it": "Segnalazione immediata: inviare una richiesta di assistenza tramite chat e ricevere una risposta diretta",
+                    "rm": "Annunzia immediata: trametter in ticket en il chat e survegnir ina resposta directa"
+                  }
+                },
+                {
+                  "id": "ac-redress-public-list",
+                  "label": {
+                    "de": "Öffentliches Protokoll: Aufnahme in eine zentrale, transparente Liste bekannter Probleme und Korrekturen",
+                    "en": "Public Logs: adding this to a centralized, transparent list of known issues and fixes",
+                    "fr": "Journal public : l'ajouter à une liste centralisée et transparente des problèmes connus et des correctifs",
+                    "it": "Registro pubblico: aggiungere il caso a un elenco centralizzato e trasparente di problemi noti e relative soluzioni",
+                    "rm": "Protocols publics: agiuntar en ina glista centrala e transparenta da problems enconuschents e da lur soluziuns"
+                  }
+                },
+                {
+                  "id": "ac-redress-human",
+                  "label": {
+                    "de": "Menschlicher Support: direkt eine echte Person erreichen, die das Problem löst",
+                    "en": "Human Support: accessing a real person directly to resolve the issue",
+                    "fr": "Assistance humaine : joindre directement une vraie personne pour résoudre le problème",
+                    "it": "Assistenza umana: poter contattare direttamente un operatore per risolvere il problema",
+                    "rm": "Sustegn uman: contact direct cun in collavuratur per schliar il problem"
+                  }
+                },
+                {
+                  "id": "ac-redress-nothing",
+                  "label": {
+                    "de": "Eigenes Urteil: nichts Besonderes tun, Fehler passieren und ich kann sie selbst überprüfen",
+                    "en": "Personal Judgment: doing nothing special, errors happen and I can verify them myself",
+                    "fr": "Jugement personnel : ne rien faire de spécial, les erreurs arrivent et je peux vérifier moi-même",
+                    "it": "Giudizio personale: non fare nulla di speciale, gli errori capitano e posso verificarli da solo",
+                    "rm": "Valitaziun persunala: far nagut spezial, sbagls capitan ed jau poss verifitgar quai sez"
+                  }
+                }
+              ],
+              "question": {
+                "de": "Die KI liegt bei etwas Wichtigem falsch, und es betrifft Sie. Was ist Ihnen am wichtigsten?",
+                "en": "The AI gets something important wrong, and it affects you. What matters most to you?",
+                "fr": "L'IA se trompe sur quelque chose d'important, et cela a des conséquences pour vous. Qu'est-ce qui compte le plus pour vous ?",
+                "it": "L'IA sbaglia qualcosa di importante, e la cosa ti riguarda. Cosa conta di più per te?",
+                "rm": "L'IA fa in sbagl decisiv, e quai ha consequenzas per tai. Tge è il pli impurtant per tai?"
+              },
+              "multiSelect": false,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it",
+                "rm"
+              ],
+              "shuffleOptions": true
+            }
+          },
+          {
+            "id": "ac-contribute-step",
+            "mode": "always",
+            "opener": {
+              "id": "ac-contribute",
+              "kind": "question",
+              "header": {
+                "de": "Mitmachen",
+                "en": "Getting involved",
+                "fr": "S'impliquer",
+                "it": "Partecipare",
+                "rm": "Sa participar"
+              },
+              "options": [
+                {
+                  "id": "ac-contribute-surveys",
+                  "label": {
+                    "de": "An Umfragen und öffentlichen Dialogen teilnehmen",
+                    "en": "Taking part in surveys and public dialogues",
+                    "fr": "Participer à des sondages et à des dialogues publics",
+                    "it": "Partecipare a sondaggi e dialoghi pubblici",
+                    "rm": "Sa participar ad enquistas e consultaziuns"
+                  }
+                },
+                {
+                  "id": "ac-contribute-testing",
+                  "label": {
+                    "de": "KI-Systeme testen und bewerten, Rückmeldungen geben",
+                    "en": "Testing and evaluating AI systems, giving feedback",
+                    "fr": "Tester et évaluer des systèmes d'IA, donner un retour",
+                    "it": "Testare e valutare sistemi di IA, fornendo un riscontro",
+                    "rm": "Testar ed evaluar sistems d'IA, dar feedback"
+                  }
+                },
+                {
+                  "id": "ac-contribute-expertise",
+                  "label": {
+                    "de": "Fachwissen einbringen oder an Forschung mitwirken",
+                    "en": "Contributing expertise or collaborating on research",
+                    "fr": "Apporter mon expertise ou collaborer à la recherche",
+                    "it": "Contribuire con competenze o collaborare alla ricerca",
+                    "rm": "Contribuir savida tecnica, professiunala u speziala"
+                  }
+                },
+                {
+                  "id": "ac-contribute-governance",
+                  "label": {
+                    "de": "In Governance- oder Beratungsgruppen mitwirken",
+                    "en": "Taking part in governance or advisory groups",
+                    "fr": "Participer à des groupes de gouvernance ou consultatifs",
+                    "it": "Partecipare a organi di governance o gruppi consultivi",
+                    "rm": "Cooperaziun en gremis directivs u da cussegliaziun"
+                  }
+                },
+                {
+                  "id": "ac-contribute-none",
+                  "label": {
+                    "de": "Ich möchte nicht mitwirken",
+                    "en": "I would not like to contribute",
+                    "fr": "Je ne souhaite pas contribuer",
+                    "it": "Non desidero contribuire",
+                    "rm": "Jau na vuless betg contribuir"
+                  },
+                  "exclusive": true
+                }
+              ],
+              "question": {
+                "de": "Wie würden Sie gerne an der Schweizer KI mitwirken?",
+                "en": "How would you be interested in contributing to Swiss AI?",
+                "fr": "Comment aimeriez-vous contribuer à l'IA suisse ?",
+                "it": "Come ti piacerebbe contribuire all'IA svizzera?",
+                "rm": "Co fissas Vus interessads da prestar ina contribuziun a l'IA da la Svizra?"
+              },
+              "multiSelect": true,
+              "otherAssist": true,
+              "draftLocales": [
+                "de",
+                "fr",
+                "it"
+              ],
+              "shuffleOptions": true
+            }
+          },
+          {
+            "n": 1,
+            "id": "ac-s3",
+            "mode": "drawN",
+            "pool": [
+              {
+                "id": "ac-responsibility",
+                "kind": "question",
+                "header": {
+                  "de": "Wer ist verantwortlich",
+                  "en": "Who's responsible",
+                  "fr": "Qui est responsable",
+                  "it": "Chi è responsabile",
+                  "rm": "Tgi è responsabel?"
+                },
+                "options": [
+                  {
+                    "id": "ac-resp-builder",
+                    "label": {
+                      "de": "Der Hersteller: das Unternehmen oder Forschungsinstitut, das die KI entwickelt hat, hat ein System gebaut, das gefährlichen Rat gab",
+                      "en": "The builder: the company or research institute that developed the AI built a system that gave dangerous advice",
+                      "fr": "Le concepteur : l'entreprise ou l'institut de recherche qui a développé l'IA a construit un système qui a donné un conseil dangereux",
+                      "it": "Chi l'ha sviluppata: l'azienda o l'istituto di ricerca che ha creato l'IA ha realizzato un sistema capace di fornire consigli pericolosi",
+                      "rm": "Il sviluppader: L'interpresa u l'institut da perscrutaziun che ha sviluppà l'IA ha creà in sistem che ha dà cussegls privlus."
+                    }
+                  },
+                  {
+                    "id": "ac-resp-deployer",
+                    "label": {
+                      "de": "Der Anbieter: die Behörde oder Institution, die die KI öffentlich verfügbar gemacht hat, hat sie ohne ausreichende Schutzvorkehrungen angeboten",
+                      "en": "The deployer: the government or institution that made the AI available to the public chose to offer it without sufficient safeguards",
+                      "fr": "Le fournisseur : l'autorité ou l'institution qui a rendu l'IA accessible au public a choisi de l'offrir sans garanties suffisantes",
+                      "it": "Chi l'ha resa disponibile: l'ente pubblico o l'istituzione che ha messo l'IA a disposizione del pubblico ha scelto di offrirla senza tutele sufficienti",
+                      "rm": "Il furnitur: La regenza u l'instituziun che ha mess a disposiziun l'IA a la publicitad è sa decidida da la porscher senza avair mesiras da segirezza suffizientas."
+                    }
+                  },
+                  {
+                    "id": "ac-resp-user",
+                    "label": {
+                      "de": "Die nutzende Person: Sie ist in einer schwerwiegenden Frage dem Rat der KI gefolgt, anstatt eine Expertin oder einen Experten zu konsultieren",
+                      "en": "The user: the person acted on AI advice for a serious matter without consulting a professional",
+                      "fr": "L'utilisateur : la personne a suivi un conseil de l'IA pour une affaire sérieuse sans consulter un professionnel",
+                      "it": "L'utente: la persona ha agito su un consiglio dell'IA in una questione seria senza consultare un professionista",
+                      "rm": "L'utilisader: La persuna ha agì en ina chaussa impurtanta sin cussegl d'ina IA, senza consultar ina persuna dal fatg."
+                    }
+                  },
+                  {
+                    "id": "ac-resp-ai",
+                    "label": {
+                      "de": "Die KI selbst: das System hat versagt und gefährlichen Rat erzeugt",
+                      "en": "The AI itself: the system failed and produced dangerous advice",
+                      "fr": "L'IA elle-même : le système a échoué et a produit un conseil dangereux",
+                      "it": "L'IA stessa: il sistema ha fallito e ha prodotto un consiglio pericoloso",
+                      "rm": "L'IA sezza: Il sistem ha disditg ed ha dà cussegls privlus"
+                    }
+                  },
+                  {
+                    "id": "ac-resp-shared",
+                    "label": {
+                      "de": "Keine einzelne Partei: Die Verantwortung verteilt sich über die gesamte Wertschöpfungskette und lässt sich nicht einem einzelnen Akteur zuweisen.",
+                      "en": "No single party: responsibility is shared across the chain and cannot be assigned to one actor alone",
+                      "fr": "Aucune partie seule : la responsabilité est partagée tout au long de la chaîne et ne peut être attribuée à un seul acteur",
+                      "it": "Nessuna singola parte: la responsabilità è condivisa lungo la catena e non può essere attribuita a un solo attore",
+                      "rm": "Nagina partida singula: la responsabladad vegn repartida sin l'entira chadaina e na po betg vegnir attribuida ad in sulet actur"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Jemand folgt einem Rat der KI und kommt dadurch zu Schaden. Wer trägt Ihrer Ansicht nach die grösste Verantwortung?",
+                  "en": "Someone follows advice from AI and is harmed as a result. In your view, who bears the most responsibility?",
+                  "fr": "Quelqu'un suit un conseil de l'IA et en subit un préjudice. À votre avis, qui porte la plus grande responsabilité ?",
+                  "it": "Qualcuno segue un consiglio dell'IA e ne subisce un danno. Secondo te, chi ha la maggiore responsabilità?",
+                  "rm": "Insatgi suonda in cussegl d'ina IA e patescha donn tras quai. Tgi ha tenor Vus la pli gronda responsabladad?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ],
+                "shuffleOptions": true
+              },
+              {
+                "id": "ac-loan",
+                "kind": "question",
+                "header": {
+                  "de": "Der Kredit",
+                  "en": "The loan",
+                  "fr": "Le crédit",
+                  "it": "Il prestito",
+                  "rm": "Il credit"
+                },
+                "options": [
+                  {
+                    "id": "ac-loan-ai",
+                    "label": {
+                      "de": "Die KI darf allein entscheiden",
+                      "en": "The AI can decide on its own",
+                      "fr": "L'IA peut décider seule",
+                      "it": "L'IA può decidere da sola",
+                      "rm": "L'IA po decider sezza"
+                    }
+                  },
+                  {
+                    "id": "ac-loan-human-final",
+                    "label": {
+                      "de": "Die KI empfiehlt, aber ein Mensch trifft die endgültige Entscheidung und verantwortet sie",
+                      "en": "The AI recommends, but a human makes the final call and answers for it",
+                      "fr": "L'IA recommande, mais un humain prend la décision finale et en répond",
+                      "it": "L'IA formula una raccomandazione, ma un essere umano prende la decisione finale e se ne assume la responsabilità",
+                      "rm": "L'IA dat recumandaziuns, ma in uman prenda la decisiun finala e surpiglia la responsabladad per quella."
+                    }
+                  },
+                  {
+                    "id": "ac-loan-humans-only",
+                    "label": {
+                      "de": "Nur Menschen: keine KI bei solchen Entscheiden",
+                      "en": "Humans only: no AI in decisions like that",
+                      "fr": "Les humains seulement : pas d'IA dans de telles décisions",
+                      "it": "Solo esseri umani: niente IA in decisioni del genere",
+                      "rm": "Mo umans: Tar talas decisiuns na duess nagina IA vegnir en acziun"
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Eine Bank nutzt KI, um mitzuentscheiden, wer einen Kredit bekommt.",
+                  "en": "A bank uses AI to help decide who gets a loan.",
+                  "fr": "Une banque utilise l'IA pour aider à décider qui obtient un crédit.",
+                  "it": "Una banca usa l'IA per aiutare a decidere chi ottiene un prestito.",
+                  "rm": "Ina banca dovra l'IA per gidar a decider tgi che survegn in credit."
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it"
+                ]
+              },
+              {
+                "id": "ac-disclosure-v2",
+                "kind": "question",
+                "header": {
+                  "de": "Offenlegung",
+                  "en": "Disclosure",
+                  "fr": "Transparence",
+                  "it": "Trasparenza",
+                  "rm": "Transparenza"
+                },
+                "options": [
+                  {
+                    "id": "ac-disc2-always",
+                    "label": {
+                      "de": "Immer: Jede KI-Beteiligung soll offengelegt werden",
+                      "en": "Always: any AI involvement should be disclosed",
+                      "fr": "Toujours : toute implication de l'IA devrait être signalée",
+                      "it": "Sempre: qualsiasi utilizzo dell'IA dovrebbe essere dichiarato",
+                      "rm": "Adina: Mintga integraziun d'IA duai vegnir declerada e communigada"
+                    }
+                  },
+                  {
+                    "id": "ac-disc2-shaped",
+                    "label": {
+                      "de": "Nur wenn die KI den Entscheid geprägt hat, nicht wenn sie bloss beim Schreiben geholfen hat",
+                      "en": "Only when the AI shaped the decision, not when it just helped with the writing",
+                      "fr": "Seulement quand l'IA a influencé la décision, pas quand elle a juste aidé à la rédaction",
+                      "it": "Solo quando l'IA ha influenzato la decisione, non quando ha solo aiutato a scrivere",
+                      "rm": "Mo sche l'IA ha influenzà la decisiun, dentant betg sch'ella ha sulettamain gidà a scriver il text"
+                    }
+                  },
+                  {
+                    "id": "ac-disc2-no-need",
+                    "label": {
+                      "de": "Sie müssen es mir nicht sagen: Es ist ein Werkzeug, wie ein Programm zur Rechtschreibprüfung",
+                      "en": "They don't need to tell me: it's a tool, like a spell-checker",
+                      "fr": "Il n'a pas besoin de me le dire : c'est un outil, comme un correcteur orthographique",
+                      "it": "Non devono dirmelo: è uno strumento, come un correttore ortografico",
+                      "rm": "Quai na ston els betg dir a mai: Igl è in med d'agid, gist sco ina controlla ortografica."
+                    }
+                  }
+                ],
+                "question": {
+                  "de": "Sie reichen bei einer Behörde ein Gesuch ein. Für die Antwort wurde KI als Hilfe genutzt. Wann muss man Ihnen das sagen?",
+                  "en": "You submit a request to a government office. They used AI to help write the reply. When should they have to tell you?",
+                  "fr": "Vous soumettez une demande à un office public. Celui-ci a utilisé l'IA pour aider à rédiger la réponse. Quand devrait-il vous le dire ?",
+                  "it": "Presenti una richiesta a un ufficio pubblico, che usa l'IA per contribuire a redigere la risposta. Quando dovrebbe essere tenuto a informarti?",
+                  "rm": "Vus inoltrais ina dumonda ad in'autoritad. Quella ha duvrà IA tar l'elavuraziun da la resposta. Cura stuess ella communitgar quai a Vus?"
+                },
+                "multiSelect": false,
+                "otherAssist": true,
+                "draftLocales": [
+                  "de",
+                  "fr",
+                  "it",
+                  "rm"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "rationale": "Your answers shape who controls Switzerland's AI, who answers when it causes harm, and what redress you get."
+    }
+  ],
+  "wrapUp": {
+    "closing": {
+      "prompt": "You are Apertus, the interviewer closing the Swiss National AI Dialogue — a short public consultation on what people in Switzerland want from Apertus, the country's own AI. The participant has finished every topic. You have just introduced yourself, explained that you are building a wall of quotes from people all around Switzerland to reflect their hopes and aspirations for AI, and asked the dialogue's closing question. Beside this chat they see an editable quote card that drafts itself from this exchange; this conversation is their space to think their answer through out loud.\n\n- Follow whatever they bring up — this exchange has no script beyond the card's question. Draw out what they mean in concrete terms and why it matters to them.\n- Ask ONE short question per message, then get out of the way and let the participant talk. HARD LIMIT: at most two short sentences per message.\n- Stay warm and neutral: never give advice, argue, praise an answer, or ask a leading question. If an answer is short or \"I don't know,\" accept it and move on — never ask \"why\" twice in a row.\n- The quote card rewrites itself from this exchange, and the participant can edit it directly at any time — you do NOT write or manage the card, and you never quote or repeat its text in the chat. Your only job is the conversation.\n- You never end the exchange: the participant ends it from the card, by adding their quote or skipping. Everything you write is shown to the participant — no notes to yourself, no recap of the survey.\n- You have NO tools in this conversation. Never emit tool-call syntax or JSON; reply in plain conversational text only.",
+      "question": {
+        "de": "In einem kurzen Satz: Was erhoffen Sie sich für die Zukunft der KI in der Schweiz?",
+        "en": "In one short sentence: what do you hope for the future of AI in Switzerland?",
+        "fr": "En une courte phrase : qu'espérez-vous pour l'avenir de l'IA en Suisse ?",
+        "it": "In una breve frase: cosa speri per il futuro dell'IA in Svizzera?",
+        "rm": "En ina curta frasa: Tge sperais Vus per l'avegnir da la IA en Svizra?"
+      }
+    },
+    "questions": [
+      {
+        "id": "wrapup-ai-frequency",
+        "kind": "question",
+        "header": {
+          "de": "KI-Nutzung",
+          "en": "AI use",
+          "fr": "Usage de l'IA",
+          "it": "Uso dell'IA",
+          "rm": "Diever da l'IA"
+        },
+        "options": [
+          {
+            "id": "ai-frequency-daily",
+            "label": {
+              "de": "Täglich",
+              "en": "Daily",
+              "fr": "Tous les jours",
+              "it": "Ogni giorno",
+              "rm": "Mintga di"
+            }
+          },
+          {
+            "id": "ai-frequency-weekly",
+            "label": {
+              "de": "Wöchentlich",
+              "en": "Weekly",
+              "fr": "Toutes les semaines",
+              "it": "Ogni settimana",
+              "rm": "Mintga emna"
+            }
+          },
+          {
+            "id": "ai-frequency-monthly",
+            "label": {
+              "de": "Monatlich",
+              "en": "Monthly",
+              "fr": "Tous les mois",
+              "it": "Ogni mese",
+              "rm": "Mintga mais"
+            }
+          },
+          {
+            "id": "ai-frequency-rarely",
+            "label": {
+              "de": "Selten",
+              "en": "Rarely",
+              "fr": "Rarement",
+              "it": "Raramente",
+              "rm": "Darar"
+            }
+          },
+          {
+            "id": "ai-frequency-never",
+            "label": {
+              "de": "Nie",
+              "en": "Never",
+              "fr": "Jamais",
+              "it": "Mai",
+              "rm": "Mai"
+            }
+          }
+        ],
+        "question": {
+          "de": "Wie oft nutzen Sie KI-Systeme wie ChatGPT, Claude, Gemini usw.?",
+          "en": "How often do you use AI systems such as ChatGPT, Claude, Gemini, etc.?",
+          "fr": "À quelle fréquence utilisez-vous des systèmes d'IA comme ChatGPT, Claude, Gemini, etc. ?",
+          "it": "Quanto spesso usi sistemi di IA come ChatGPT, Claude, Gemini, ecc.?",
+          "rm": "Quant savens duvrais Vus sistems d'IA sco ChatGPT, Claude, Gemini etc.?"
+        },
+        "multiSelect": false
+      },
+      {
+        "id": "wrapup-ai-uses",
+        "kind": "question",
+        "header": {
+          "de": "Wofür Sie sie nutzen",
+          "en": "What you use it for",
+          "fr": "Vos usages",
+          "it": "Per cosa la usi",
+          "rm": "Per tge Vus la duvrais"
+        },
+        "options": [
+          {
+            "id": "ai-uses-work",
+            "label": {
+              "de": "Arbeit und Produktivität",
+              "en": "Work and productivity",
+              "fr": "Travail et productivité",
+              "it": "Lavoro e produttività",
+              "rm": "Lavur e productivitad"
+            }
+          },
+          {
+            "id": "ai-uses-learning",
+            "label": {
+              "de": "Lernen und Fragen beantworten",
+              "en": "Learning and answering questions",
+              "fr": "Apprendre et répondre à des questions",
+              "it": "Imparare e rispondere a domande",
+              "rm": "Emprender e respunder dumondas"
+            }
+          },
+          {
+            "id": "ai-uses-writing",
+            "label": {
+              "de": "Schreiben und kreative Projekte",
+              "en": "Writing and creative projects",
+              "fr": "Écriture et projets créatifs",
+              "it": "Scrittura e progetti creativi",
+              "rm": "Scriver e projects creativs"
+            }
+          },
+          {
+            "id": "ai-uses-coding",
+            "label": {
+              "de": "Programmieren und technische Aufgaben",
+              "en": "Coding and technical tasks",
+              "fr": "Programmation et tâches techniques",
+              "it": "Programmazione e compiti tecnici",
+              "rm": "Programmar e incumbensas tecnicas"
+            }
+          },
+          {
+            "id": "ai-uses-everyday",
+            "label": {
+              "de": "Alltag und persönliche Ratschläge",
+              "en": "Everyday life and personal advice",
+              "fr": "Vie quotidienne et conseils personnels",
+              "it": "Vita quotidiana e consigli personali",
+              "rm": "Mintgadi e cussegls persunals"
+            }
+          },
+          {
+            "id": "ai-uses-other",
+            "label": {
+              "de": "Andere",
+              "en": "Other",
+              "fr": "Autre",
+              "it": "Altro",
+              "rm": "Auter"
+            },
+            "freeText": true
+          }
+        ],
+        "question": {
+          "de": "Wofür nutzen Sie KI?",
+          "en": "What do you use AI for?",
+          "fr": "Pour quoi utilisez-vous l'IA ?",
+          "it": "Per cosa usi l'IA?",
+          "rm": "Per tge duvrais Vus l'IA?"
+        },
+        "multiSelect": true,
+        "otherAssist": true,
+        "visibleWhen": {
+          "negate": true,
+          "openerId": "wrapup-ai-frequency",
+          "selected": [
+            "ai-frequency-never"
+          ]
+        }
+      },
+      {
+        "id": "wrapup-ai-nonuse",
+        "kind": "question",
+        "header": {
+          "de": "Warum nicht",
+          "en": "Why not",
+          "fr": "Pourquoi pas",
+          "it": "Perché no",
+          "rm": "Pertge betg"
+        },
+        "options": [
+          {
+            "id": "ai-nonuse-not-needed",
+            "label": {
+              "de": "Ich habe sie nicht gebraucht",
+              "en": "I haven't needed it",
+              "fr": "Je n'en ai pas eu besoin",
+              "it": "Non ne ho avuto bisogno",
+              "rm": "Jau n'hai betg dovrà ella"
+            }
+          },
+          {
+            "id": "ai-nonuse-distrust",
+            "label": {
+              "de": "Ich vertraue ihr meine Informationen nicht an",
+              "en": "I don't trust it with my information",
+              "fr": "Je ne lui fais pas confiance avec mes informations",
+              "it": "Non mi fido a darle le mie informazioni",
+              "rm": "Jau na m'fid betg da fidar a l'IA mias infurmaziuns"
+            }
+          },
+          {
+            "id": "ai-nonuse-complicated",
+            "label": {
+              "de": "Es erscheint mir zu kompliziert",
+              "en": "It feels too complicated",
+              "fr": "Cela me paraît trop compliqué",
+              "it": "Mi sembra troppo complicato",
+              "rm": "I ma para memia cumplitgà"
+            }
+          },
+          {
+            "id": "ai-nonuse-not-useful",
+            "label": {
+              "de": "Ich habe es versucht und es war nicht nützlich",
+              "en": "I tried it and it wasn't useful",
+              "fr": "J'ai essayé et ce n'était pas utile",
+              "it": "L'ho provata e non è stata utile",
+              "rm": "Jau hai empruvà ed i n'era betg util"
+            }
+          },
+          {
+            "id": "ai-nonuse-concerns",
+            "label": {
+              "de": "Ich habe generell Bedenken gegenüber KI",
+              "en": "I have concerns about AI in general",
+              "fr": "J'ai des réserves sur l'IA en général",
+              "it": "Ho delle preoccupazioni sull'IA in generale",
+              "rm": "Jau hai en general dubis envers l'IA"
+            }
+          },
+          {
+            "id": "ai-nonuse-other",
+            "label": {
+              "de": "Andere",
+              "en": "Other",
+              "fr": "Autre",
+              "it": "Altro",
+              "rm": "Auter"
+            },
+            "freeText": true
+          }
+        ],
+        "question": {
+          "de": "Was ist der Hauptgrund, warum Sie keine KI nutzen?",
+          "en": "What's the main reason you don't use AI?",
+          "fr": "Quelle est la principale raison pour laquelle vous n'utilisez pas l'IA ?",
+          "it": "Qual è il motivo principale per cui non usi l'IA?",
+          "rm": "Tge è la raschun principala per tge Vus na duvrais betg l'IA?"
+        },
+        "multiSelect": false,
+        "otherAssist": true,
+        "visibleWhen": {
+          "openerId": "wrapup-ai-frequency",
+          "selected": [
+            "ai-frequency-never"
+          ]
+        }
+      },
+      {
+        "id": "wrapup-age",
+        "kind": "question",
+        "header": {
+          "de": "Alter",
+          "en": "Age",
+          "fr": "Âge",
+          "it": "Età",
+          "rm": "Vegliadetgna"
+        },
+        "options": [
+          {
+            "id": "age-under-25",
+            "label": {
+              "de": "Unter 25",
+              "en": "Under 25",
+              "fr": "Moins de 25 ans",
+              "it": "Meno di 25 anni",
+              "rm": "Sut 25"
+            }
+          },
+          {
+            "id": "age-25-44",
+            "label": {
+              "de": "25–44",
+              "en": "25–44",
+              "fr": "25–44",
+              "it": "25–44",
+              "rm": "25–44"
+            }
+          },
+          {
+            "id": "age-45-64",
+            "label": {
+              "de": "45–64",
+              "en": "45–64",
+              "fr": "45–64",
+              "it": "45–64",
+              "rm": "45–64"
+            }
+          },
+          {
+            "id": "age-65-plus",
+            "label": {
+              "de": "65+",
+              "en": "65+",
+              "fr": "65+",
+              "it": "65+",
+              "rm": "65+"
+            }
+          }
+        ],
+        "question": {
+          "de": "Wie alt sind Sie?",
+          "en": "How old are you?",
+          "fr": "Quel âge avez-vous ?",
+          "it": "Quanti anni hai?",
+          "rm": "Quants onns avais Vus?"
+        },
+        "multiSelect": false
+      },
+      {
+        "id": "wrapup-field",
+        "kind": "question",
+        "header": {
+          "de": "Bereich",
+          "en": "Field",
+          "fr": "Domaine",
+          "it": "Ambito",
+          "rm": "Sectur"
+        },
+        "options": [
+          {
+            "id": "field-technology",
+            "label": {
+              "de": "Technologie & digitale Dienste",
+              "en": "Technology & digital services",
+              "fr": "Technologie et services numériques",
+              "it": "Tecnologia e servizi digitali",
+              "rm": "Tecnologia & servetschs digitals"
+            }
+          },
+          {
+            "id": "field-health",
+            "label": {
+              "de": "Gesundheit & Pflege",
+              "en": "Health & care",
+              "fr": "Santé et soins",
+              "it": "Salute e assistenza",
+              "rm": "Sanadad & tgira"
+            }
+          },
+          {
+            "id": "field-education",
+            "label": {
+              "de": "Bildung & Forschung",
+              "en": "Education & research",
+              "fr": "Éducation et recherche",
+              "it": "Istruzione e ricerca",
+              "rm": "Furmaziun & perscrutaziun"
+            }
+          },
+          {
+            "id": "field-law",
+            "label": {
+              "de": "Recht, Politik & öffentliche Verwaltung",
+              "en": "Law, policy & public administration",
+              "fr": "Droit, politique et administration publique",
+              "it": "Diritto, politiche pubbliche e amministrazione pubblica",
+              "rm": "Dretg, politica & administraziun publica"
+            }
+          },
+          {
+            "id": "field-business",
+            "label": {
+              "de": "Wirtschaft & Finanzen",
+              "en": "Business & finance",
+              "fr": "Affaires et finance",
+              "it": "Economia e finanza",
+              "rm": "Economia & finanzas"
+            }
+          },
+          {
+            "id": "field-media",
+            "label": {
+              "de": "Medien, Kunst & Kultur",
+              "en": "Media, arts & culture",
+              "fr": "Médias, arts et culture",
+              "it": "Media, arti e cultura",
+              "rm": "Medias, art & cultura"
+            }
+          },
+          {
+            "id": "field-industry",
+            "label": {
+              "de": "Industrie, Handel & Produktion",
+              "en": "Industry, trade & manufacturing",
+              "fr": "Industrie, commerce et fabrication",
+              "it": "Industria, commercio e produzione",
+              "rm": "Industria, commerzi & producziun"
+            }
+          },
+          {
+            "id": "field-nonprofit",
+            "label": {
+              "de": "Non-Profit & Zivilgesellschaft",
+              "en": "Non-profit & civil society",
+              "fr": "Organisations sans but lucratif et société civile",
+              "it": "Terzo settore e società civile",
+              "rm": "Organisaziuns senza finamira da profit e societad civila"
+            }
+          },
+          {
+            "id": "field-other",
+            "label": {
+              "de": "Andere",
+              "en": "Other",
+              "fr": "Autre",
+              "it": "Altro",
+              "rm": "Auter"
+            },
+            "freeText": true
+          }
+        ],
+        "question": {
+          "de": "In welchem Bereich sind Sie tätig, studieren Sie oder machen Sie eine Ausbildung?",
+          "en": "What field do you work or study in?",
+          "fr": "Dans quel domaine travaillez-vous ou étudiez-vous ?",
+          "it": "In quale ambito lavori o studi?",
+          "rm": "En tge sectur lavurais u studegiais Vus?"
+        },
+        "multiSelect": false
+      }
+    ],
+    "archetypeRules": {
+      "axes": [
+        "candor",
+        "protection",
+        "boldness"
+      ],
+      "axisMax": {
+        "candor": 3,
+        "boldness": 2,
+        "protection": 2
+      },
+      "mcqItems": [
+        {
+          "axis": "candor",
+          "byOption": {
+            "dl-vote-honest": 1,
+            "dl-vote-decline": -1
+          },
+          "openerId": "dl-vote"
+        },
+        {
+          "axis": "candor",
+          "byOption": {
+            "dl-unc-guess": 1,
+            "dl-unc-dontknow": -1
+          },
+          "openerId": "dl-uncertainty"
+        },
+        {
+          "axis": "candor",
+          "byOption": {
+            "dl-lonely-warm": -1,
+            "dl-lonely-plain": 1
+          },
+          "openerId": "dl-companion-lonely"
+        },
+        {
+          "axis": "protection",
+          "byOption": {
+            "ac-loan-ai": -1,
+            "ac-loan-humans-only": 1
+          },
+          "openerId": "ac-loan"
+        }
+      ],
+      "scaleLow": 40,
+      "scaleHigh": 60,
+      "scaleItems": [
+        {
+          "low": 1,
+          "axis": "protection",
+          "high": -1,
+          "openerId": "sf-memory"
+        },
+        {
+          "low": 1,
+          "axis": "boldness",
+          "high": -1,
+          "openerId": "sf-own-or-best"
+        },
+        {
+          "low": -1,
+          "axis": "boldness",
+          "high": 1,
+          "openerId": "in-access"
+        }
+      ],
+      "trackRange": {
+        "max": 95,
+        "min": 5
+      },
+      "classification": {
+        "bySigns": {
+          "100": "principled-skeptic",
+          "101": "straight-talker",
+          "110": "vigilant-guardian",
+          "111": "protective-realist",
+          "000": "quiet-liberal",
+          "001": "liberal-pragmatist",
+          "010": "careful-mediator",
+          "011": "pragmatic-guardian"
+        },
+        "thresholds": {
+          "candor": {
+            "value": 0,
+            "inclusive": false
+          },
+          "boldness": {
+            "value": 0,
+            "inclusive": false
+          },
+          "protection": {
+            "value": 0,
+            "inclusive": true
+          }
+        }
+      }
+    },
+    "feedbackActorId": "feedback-v1"
+  },
+  "locales": [
+    "en",
+    "de",
+    "fr",
+    "it",
+    "rm"
+  ],
+  "aiActors": {
+    "feedback-v1": {
+      "id": "feedback-v1",
+      "model": "apertus-1.5-70b-dpo",
+      "prompt": "# Post-survey feedback conversation\n\nThe participant has just finished the Swiss National AI Dialogue and is on the thank-you page. This is a brief, optional chat about the EXPERIENCE of taking part — it does not feed the research, it only helps us improve the dialogue itself. You have no tools; just talk.\n\n## Open\nOne or two short sentences, warm and human. Ask whether there was anything we did not ask — anything about AI in Switzerland they wanted to say, or expected to be asked, that never came up. (If a \"revealed profile\" section appears above, do not open from it; mention it only if they raise it. If none appears, never mention any profile or result.)\n\n## After that\nFollow what they open up — you might touch how it felt (length, pacing, whether the cards engaged them), anything confusing or missing, whether their views felt captured, or what would make them recommend it. Pick what fits; never run through a checklist.\n\n## Style\nOne question per message, at most two short sentences before it — this is a quick exit chat, not a second interview. Ask at most 3–4 questions, then wrap up warmly: thank them, tell them their feedback is noted, and let them know they're all done and can close the page whenever they like. Never reopen the survey topics, never defend the design, never argue with criticism — receive it, dig one level deeper if useful, and thank them. If they have no feedback, one light follow-up at most, then wrap up."
+    },
+    "topic-investing-v1": {
+      "id": "topic-investing-v1",
+      "model": "apertus-1.5-70b-dpo",
+      "prompt": ""
+    },
+    "topic-daily-life-v1": {
+      "id": "topic-daily-life-v1",
+      "model": "apertus-1.5-70b-dpo",
+      "prompt": ""
+    },
+    "topic-accountability-v1": {
+      "id": "topic-accountability-v1",
+      "model": "apertus-1.5-70b-dpo",
+      "prompt": ""
+    },
+    "topic-swiss-or-foreign-v1": {
+      "id": "topic-swiss-or-foreign-v1",
+      "model": "apertus-1.5-70b-dpo",
+      "prompt": ""
+    },
+    "topic-languages-culture-v1": {
+      "id": "topic-languages-culture-v1",
+      "model": "apertus-1.5-70b-dpo",
+      "prompt": ""
+    }
+  },
+  "drawHash": "mixed",
+  "onboarding": {
+    "hook": {
+      "de": "Die Schweiz hat ihre eigene KI gebaut. Sie heisst Apertus.",
+      "en": "Switzerland built its own AI. It's called Apertus.",
+      "fr": "La Suisse a créé sa propre IA. Elle s'appelle Apertus.",
+      "it": "La Svizzera ha creato la propria IA. Si chiama Apertus.",
+      "rm": "La Svizra ha sviluppà sia atgna IA. Ella ha num Apertus."
+    },
+    "kicker": {
+      "de": "In der Schweiz gemacht. Von Ihnen mitgestaltet.",
+      "en": "Made by Switzerland. Shaped by You.",
+      "fr": "Née en Suisse. À votre image.",
+      "it": "Realizzato dalla Svizzera. Plasmato da te.",
+      "rm": "Fatga da la Svizra. Furmada da Vus."
+    },
+    "promise": {
+      "de": "Was Sie hier teilen, geht direkt an das Team, das Apertus baut. Ein direkter Zugang dazu, wie die Schweizer KI gestaltet wird.",
+      "en": "What you share here goes straight to the team building Apertus. A direct line into how Switzerland's own AI takes shape.",
+      "fr": "Ce que vous partagez ici va directement à l'équipe qui construit Apertus. Un lien direct avec la façon dont l'IA suisse prend forme.",
+      "it": "Ciò che condividi qui arriva direttamente al team che sviluppa Apertus. Un canale diretto per contribuire al modo in cui prende forma l'IA svizzera.",
+      "rm": "Quai che Vus partis qua va directamain al team da svilup dad Apertus. In'invista directa en la furmaziun da l'IA svizra."
+    },
+    "welcome": {
+      "de": "Dies ist Ihre Gelegenheit, direkt am Aufbau der Schweizer KI mitzuwirken – genau so, wie Sie über eine Referendumsvorlage abstimmen oder eine Initiative unterschreiben würden.",
+      "en": "Your opportunity to participate in building Switzerland's AI directly, the same way you would vote on a referendum or sign an initiative.",
+      "fr": "L'occasion de participer directement à la construction de l'IA suisse, comme lors d'une votation ou d'une initiative.",
+      "it": "La tua occasione per partecipare direttamente alla costruzione dell'IA svizzera, proprio come voteresti in un referendum o firmeresti un'iniziativa.",
+      "rm": "Vossa schanza dad esser directamain part da la construcziun da l'IA svizra – gist sco che Vus vuschassas davart in referendum u suttascrivessas in'iniziativa."
+    },
+    "cantonWhy": {
+      "de": "So können wir zeigen, dass wir eine Vielzahl an Stimmen von Menschen aus der Schweiz gehört haben.",
+      "en": "This helps us show that we heard from a wide range of people across Switzerland.",
+      "fr": "Cela nous aide à montrer que nous avons entendu des personnes de tous horizons dans toute la Suisse.",
+      "it": "Questo ci aiuta a mostrare che abbiamo ascoltato un'ampia varietà di persone in tutta la Svizzera.",
+      "rm": "Tras quai pudain nus mussar che nus avain resguardà las opiniuns d'ina vasta paletta da persunas da tut la Svizra."
+    },
+    "provocation": {
+      "de": "Jede andere KI in Ihrem Leben wurde von Unternehmen entwickelt, denen Sie nie begegnen werden, und folgt Regeln, über die Sie nie mitbestimmen konnten.",
+      "en": "Every other AI in your life was built by companies you will never meet, following rules you never had a say in.",
+      "fr": "Toutes les autres IA de votre vie ont été créées par des entreprises que vous ne rencontrerez jamais, selon des règles que vous n'avez jamais pu influencer.",
+      "it": "Ogni altra IA nella tua vita è stata creata da aziende che non incontrerai mai, seguendo regole su cui non hai mai avuto voce in capitolo.",
+      "rm": "Mintg'autra IA en Vossa vita è vegnida sviluppada d'interpresas che Vus na vegnis mai ad entupar e suonda reglas davart las qualas Vus n'avevas mai in pled da dir."
+    },
+    "promiseLabel": {
+      "de": "Unser Versprechen an Sie",
+      "en": "Our promise to you",
+      "fr": "Notre promesse",
+      "it": "La nostra promessa",
+      "rm": "Nossa empermischun a Vus"
+    },
+    "welcomeLabel": {
+      "de": "Willkommen zum Schweizer Nationalen KI-Dialog",
+      "en": "Welcome to the Swiss National AI Dialogue",
+      "fr": "Bienvenue au Dialogue National Suisse sur l'IA",
+      "it": "Benvenuto nel Dialogo nazionale svizzero sull'IA",
+      "rm": "Bainvegni al Dialog naziunal svizzer davart l'IA"
+    },
+    "continueLabel": {
+      "de": "Weiter",
+      "en": "Continue",
+      "fr": "Continuer",
+      "it": "Continua",
+      "rm": "Cuntinuar"
+    },
+    "cantonQuestion": {
+      "de": "Welchen Kanton betrachten Sie als Ihren Lebensmittelpunkt?",
+      "en": "Which canton do you consider your primary place of life?",
+      "fr": "Quel canton considérez-vous comme votre principal lieu de vie ?",
+      "it": "In quale cantone vivi principalmente?",
+      "rm": "Tge chantun considerais Vus sco Voss domicil principal?"
+    }
+  },
+  "feedbackPlan": "# Post-survey feedback conversation\n\nYou are the interviewer of the Swiss National AI Dialogue. The participant has finished the survey — the topic cards and any short exchanges are complete, their contribution is submitted, and they are on the final thank-you page. You are now having a brief, optional feedback conversation about the EXPERIENCE of taking part. This is not part of the survey: nothing here feeds the research findings, it helps the team improve the dialogue itself.\n\n## Your opening message\n\n- Keep it to 1–2 short sentences. Warm, human, no bullet points.\n- Open by asking whether there is anything we did not ask — anything about AI in Switzerland they wanted to say, or expected to be asked, that never came up. That is the door into feedback about the whole experience.\n- A \"revealed profile\" section may be present above; do not open from it, and mention it only if the participant brings it up. If no such section is present, the participant saw NO profile — never mention a profile, result, or reveal.\n\n## What to explore (pick what their answers open up — do not run through all of it)\n\n- How taking part felt: length, pacing, whether the question cards felt engaging or like a chore.\n- Whether anything was confusing, repetitive, or missing — a topic or question they expected and never got.\n- Whether they felt their views were actually captured, and any moment that felt off.\n- What would make them recommend it (or not) to someone else.\n\n## Style and boundaries\n\n- One question per message, at most two short sentences before it. This is a quick exit chat, not a second interview.\n- Ask at most 3–4 questions in total, then wrap up warmly: thank them, tell them their feedback is noted, and let them know they're all done — they can close the page whenever they like.\n- Never reopen the survey topics themselves, never defend the survey's design choices, never argue with criticism — receive it, dig one level deeper if useful, and thank them.\n- Accept \"no feedback\" gracefully: one light follow-up at most, then wrap up.\n- You have no tools in this conversation and nothing to save — just talk."
+}

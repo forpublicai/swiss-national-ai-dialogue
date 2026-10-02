@@ -1,0 +1,82 @@
+@import "../styles/theme.css";
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@source "../components/**/*.tsx";
+
+/*
+ * Wire the next/font-loaded Commissioner + Merriweather (served
+ * same-origin from /_next/static) into the theme's font tokens.
+ * The theme.css ships with `"Commissioner"` as a font-family string,
+ * which relies on the Google Fonts @import that the CSP blocks; pointing
+ * the tokens at the local CSS variables makes the fonts render
+ * faithfully.
+ */
+[data-theme="ideas-for-change"] {
+  --theme-font-sans:
+    var(--font-commissioner), system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  --theme-font-display:
+    var(--font-commissioner), system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  --theme-font-serif:
+    var(--font-merriweather), Georgia, "Times New Roman", serif;
+}
+
+/*
+ * Form controls don't inherit font-family from their ancestor by default in
+ * most browsers — they fall back to a UA-default (often a system serif or
+ * monospace), which makes textareas and inputs render in a visibly different
+ * face from surrounding body copy. Tailwind v4's preflight ships `font:
+ * inherit` for these elements, but the shorthand has been observed to lose
+ * the family in some cascading edge cases; this rule is an un-layered belt-
+ * and-suspenders that guarantees form controls pick up whatever font-family
+ * their parent (body / a `.font-sans`/`.font-serif` wrapper) declares. The
+ * same fix applies to the chat composer Textarea downstream of the hero —
+ * keeping it global avoids re-asserting the rule per surface.
+ *
+ * `button` is intentionally excluded: the shared `Button` sets its own
+ * `font-sans` utility, and an un-layered `inherit` here
+ * would beat that layered utility and force buttons to the inherited body
+ * face. Native buttons still
+ * inherit via Tailwind's preflight `font: inherit`.
+ */
+textarea,
+input,
+select {
+  font-family: inherit;
+}
+
+/*
+ * iOS Safari auto-zooms when a focused form control's computed font-size is
+ * below 16px. Now that the viewport allows pinch-zoom (no `maximumScale`, see
+ * app/layout.tsx), enforce a 16px floor on touch-width viewports so focusing an
+ * input never triggers that zoom. `max(1rem, 1em)` keeps any larger contextual
+ * size intact. Unlayered + after the theme import so it beats both Tailwind
+ * utilities and the shared design system's 14px `[data-slot]` default.
+ */
+@media (max-width: 767px) {
+  [data-slot="input"],
+  [data-slot="textarea"],
+  input,
+  textarea,
+  select {
+    font-size: max(1rem, 1em);
+  }
+}
+
+body {
+  font-family: var(--theme-font-sans);
+  background-image:
+    radial-gradient(
+      circle at 50% -10%,
+      color-mix(in oklab, var(--primary) 7%, transparent) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      color-mix(in oklab, var(--accent) 12%, transparent) 0%,
+      transparent 60%
+    );
+  background-attachment: fixed;
+}

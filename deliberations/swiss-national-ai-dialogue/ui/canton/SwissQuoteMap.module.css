@@ -1,0 +1,37 @@
+/* The one permitted perpetual animation on the landing: a single CSS opacity
+   pulse on the whole halo GROUP. Never move this onto individual dots — ~300
+   per-element infinite animations + per-element filters made the previous
+   landing lag badly. */
+.glow {
+  animation: snadGlowPulse 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes snadGlowPulse {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow {
+    animation: none;
+  }
+}
+
+.panel {
+  max-height: min(55vh, 420px);
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    max-height: min(70vh, 640px);
+  }
+}
+
+.fade {
+  height: 72px;
+  background: linear-gradient(to bottom, transparent, var(--background));
+}

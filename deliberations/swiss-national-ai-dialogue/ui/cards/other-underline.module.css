@@ -1,0 +1,62 @@
+/*
+ * The MCQ "Other…" processing cue. The field is a single underlined textarea,
+ * not a boxed surface, so the "machine is rewriting your words" signal lives in
+ * the underline itself: while a rewrite is in flight, a brand gradient — Swiss
+ * red and alpine slate — flows along the line. The line is bottom-anchored to
+ * the wrapper (`inset: auto 0 0 0`), which hugs the auto-growing textarea, so it
+ * tracks the field's bottom edge as it grows. The caller hides the field's
+ * static border while this runs (the two would otherwise double up as a flat
+ * line) and supplies the wrapper's `position: relative`.
+ *
+ * The gradient tiles A→B→A→B→A at 200% width, so translating the background by a
+ * full image width loops seamlessly and stays compositor-only; the mask fades
+ * the two ends so the flow eases in/out at the field edges rather than
+ * hard-stopping.
+ */
+.line {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary),
+    var(--primary),
+    var(--secondary),
+    var(--primary)
+  );
+  background-size: 200% 100%;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.processing .line {
+  opacity: 1;
+  animation: other-underline-flow 2.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .processing .line {
+    animation: other-underline-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes other-underline-flow {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes other-underline-pulse {
+  50% {
+    opacity: 0.4;
+  }
+}

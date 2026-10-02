@@ -1,0 +1,105 @@
+/*
+ * Swiss National AI Dialogue — its own brand, NOT Ideas for Change.
+ *
+ * Direction: the International Typographic Style (Swiss Style) — grid, grotesque
+ * type, disciplined whitespace, and Swiss red as a PRECISE accent. The surface
+ * is a clean paper-white page with flat fields: no gradients, no soft
+ * shadows. Structure comes from hairline neutral borders and solid colour
+ * blocks, the way a printed Swiss poster does it.
+ *
+ * Palette (3, held with discipline):
+ *   paper  #F6F6F6  the page ground — one flat field
+ *   white  #FFFFFF  interactive surfaces (option boxes, reveal panels) — via --card
+ *   ink    #111111  body text — near-black
+ *   red    #C01F26  the single accent — selected states, CTAs, the poster field
+ *   (plus one quiet alpine slate #3A4654 for links / secondary)
+ *
+ * We override the full light token set on the ThemedRoot wrapper (a nearer
+ * ancestor than the global <html data-theme="ideas-for-change">), and pin
+ * color-scheme:light so a dark-mode visitor still gets the designed white
+ * surface. Fonts come from the next/font loaders in ThemedRoot.tsx (`--font-snad-*`).
+ */
+
+.root[data-theme-root] {
+  color-scheme: light;
+
+  /* Brand type — the Public AI pairing: NB International Pro CG (the official
+     Public AI face, highway-signage lineage) for the wordmark + display
+     headlines, Public Sans as the workhorse for body and UI. Self-hosted via
+     next/font (the CSP blocks the Google @import). */
+  --theme-font-sans: var(--font-snad-sans), system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --theme-font-display: var(--font-snad-display), var(--font-snad-sans),
+    system-ui, sans-serif;
+  --theme-font-serif: var(--font-snad-sans), system-ui, sans-serif;
+
+  /*
+   * The whole surface — landing hero, onboarding, and chat — is one flat
+   * paper-white field (ink on paper), painted by HeroContainer; red stays an
+   * accent (--hero-foreground carries card questions and opener leads).
+   */
+  --hero-background: #f6f6f6;
+  --hero-foreground: #111111;
+  --hero-text-shadow: none;
+  --hero-heading-weight: 700;
+  /* Flat design: hairline neutral borders instead of shadows. */
+  --hero-card-shadow: none;
+  --hero-card-border: rgba(17, 17, 17, 0.16);
+
+  /* Paper ground; interactive surfaces (bg-card) lift off it in white. */
+  --background: #f6f6f6;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+
+  /* Swiss red — the single brand accent. Confident as a flat fill: selected
+     options, CTAs, the poster field, the poll panels' red edge. */
+  --primary: #c01f26;
+  --primary-foreground: #ffffff;
+  --primary-icon: #c01f26;
+  --ring: #c01f26;
+
+  /* One quiet alpine slate for links / secondary, so the surface isn't all red. */
+  --secondary: #3a4654;
+  --secondary-foreground: #ffffff;
+  --accent-icon: var(--secondary);
+
+  /* Flat neutral greys — no warm tint anywhere. */
+  --muted: #f2f2f2;
+  --muted-foreground: #6b6b6b;
+  --accent: #f5f5f5;
+  --accent-foreground: #111111;
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #ffffff;
+  --success: oklch(0.55 0.16 145);
+  --success-foreground: oklch(0.985 0 0);
+
+  /* Hairline borders — the ITS rule, neutral grey. */
+  --border: rgba(17, 17, 17, 0.16);
+  --input: rgba(17, 17, 17, 0.25);
+
+  /* Tool cards stay flat: rounded corners, no shadow — surfaces are marked by
+     the white fill + hairline border, never by elevation. */
+  --card-radius: var(--radius-lg);
+  --card-shadow: none;
+
+  /* Primary buttons: red fill, white text (the base theme's gold gradient would
+     otherwise win, so override the button tokens directly). */
+  --button-primary-bg: var(--primary);
+  --button-primary-fg: #ffffff;
+  --button-primary-hover-bg: #a51b22;
+
+  /* Voting / agree-disagree tokens kept functional for any default card that
+     uses them; not part of the three-colour brand story. */
+  --vote-agree: oklch(0.55 0.16 145);
+  --vote-disagree: oklch(0.55 0.16 25);
+  --agree: var(--color-agree-100);
+  --agree-foreground: var(--color-agree-950);
+  --agree-icon: var(--color-agree-600);
+  --disagree: var(--color-disagree-100);
+  --disagree-foreground: var(--color-disagree-950);
+  --disagree-icon: var(--color-disagree-600);
+}
